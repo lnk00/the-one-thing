@@ -9,7 +9,7 @@ export function App() {
 
   return (
     <view className="app">
-      <text>The One Thing</text>
+      <text className="title">The One Thing</text>
     </view>
   );
 }
