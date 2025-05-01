@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import Animated, { Easing, FadeInDown } from 'react-native-reanimated';
+import { StyleSheet, View, Text } from 'react-native';
+import Animated, {
+  Easing,
+  FadeInDown,
+  useSharedValue,
+} from 'react-native-reanimated';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -19,12 +23,13 @@ function App() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + 12 }]}>
-      <Animated.Text
-        style={styles.title}
+      <Animated.View
+        style={styles.titleContainer}
         entering={FadeInDown.duration(500).easing(Easing.elastic(1.5))}
       >
-        The One Thing
-      </Animated.Text>
+        <Text style={styles.title}>The One Thing</Text>
+        <View style={styles.titleCover} />
+      </Animated.View>
       <StatusBar style="auto" />
     </View>
   );
@@ -36,8 +41,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 24,
   },
+  titleContainer: {
+    position: 'relative',
+  },
   title: {
     fontSize: 32,
     fontWeight: '900',
+  },
+  titleCover: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backgroundColor: '#ff0000',
+    height: '100%',
+    width: '50%',
   },
 });
