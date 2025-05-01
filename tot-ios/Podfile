@@ -1,0 +1,24 @@
+source 'https://cdn.cocoapods.org/'
+
+platform :ios, '10.0'
+
+target 'tot-ios' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'Lynx', '3.2.0-rc.1', :subspecs => [
+    'Framework',
+  ]
+
+  pod 'PrimJS', '2.11.1-rc.5', :subspecs => ['quickjs', 'napi']
+
+  pod 'LynxService', '3.2.0-rc.1', :subspecs => [
+      'Image',
+      'Log',
+      'Http',
+  ]
+
+  pod 'SDWebImage','5.15.5'
+  pod 'SDWebImageWebPCoder', '0.11.0'
+
+end
