@@ -7,146 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BA9F6352DC3A89900CDEAC6 /* main.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */; };
-		CEFE13F254F65AC53001B7F9 /* Pods_tot_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E913B6CB37B1E6F25CBB6443 /* Pods_tot_ios.framework */; };
+		1BA9F6792DC3BAB800CDEAC6 /* main.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F6782DC3BAB800CDEAC6 /* main.lynx.bundle */; };
+		340C92E33D9AD887ADDD1828 /* Pods_tot_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD1414D07977D457D36411F /* Pods_tot_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B93CAA62DC38CED00F18AD9 /* tot-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tot-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = main.lynx.bundle; path = "../tot-lynx/dist/main.lynx.bundle"; sourceTree = "<group>"; };
-		3B9BB4B317FCBBF414FF5C7F /* Pods-tot-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.debug.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		C2971BC1BF8F66442CD84262 /* Pods-tot-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.release.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.release.xcconfig"; sourceTree = "<group>"; };
-		E913B6CB37B1E6F25CBB6443 /* Pods_tot_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tot_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA9F64B2DC3B6EE00CDEAC6 /* tot-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tot-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA9F6782DC3BAB800CDEAC6 /* main.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = main.lynx.bundle; path = "../tot-lynx/dist/main.lynx.bundle"; sourceTree = "<group>"; };
+		655BA761AB62B9E4B025CA5D /* Pods-tot-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.debug.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		82713B159053274F60A794B2 /* Pods-tot-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.release.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.release.xcconfig"; sourceTree = "<group>"; };
+		9AD1414D07977D457D36411F /* Pods_tot_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tot_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1BA9F65D2DC3B6EF00CDEAC6 /* Exceptions for "tot-ios" folder in "tot-ios" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1BA9F64A2DC3B6EE00CDEAC6 /* tot-ios */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1B93CAA82DC38CED00F18AD9 /* tot-ios */ = {
+		1BA9F64D2DC3B6EE00CDEAC6 /* tot-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1BA9F65D2DC3B6EF00CDEAC6 /* Exceptions for "tot-ios" folder in "tot-ios" target */,
+			);
 			path = "tot-ios";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1B93CAA32DC38CED00F18AD9 /* Frameworks */ = {
+		1BA9F6482DC3B6EE00CDEAC6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFE13F254F65AC53001B7F9 /* Pods_tot_ios.framework in Frameworks */,
+				340C92E33D9AD887ADDD1828 /* Pods_tot_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B93CA9D2DC38CED00F18AD9 = {
+		1BA9F6422DC3B6EE00CDEAC6 = {
 			isa = PBXGroup;
 			children = (
-				1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */,
-				1B93CAA82DC38CED00F18AD9 /* tot-ios */,
-				1B93CAA72DC38CED00F18AD9 /* Products */,
-				FBDD02AA50F1A973B3B3C74E /* Pods */,
-				7CCE08706B30A4E2EE2BD879 /* Frameworks */,
+				1BA9F6782DC3BAB800CDEAC6 /* main.lynx.bundle */,
+				1BA9F64D2DC3B6EE00CDEAC6 /* tot-ios */,
+				1BA9F64C2DC3B6EE00CDEAC6 /* Products */,
+				6F41D488F56A57A9D354ACED /* Pods */,
+				909F2A16CB596FC4BE717D1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		1B93CAA72DC38CED00F18AD9 /* Products */ = {
+		1BA9F64C2DC3B6EE00CDEAC6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B93CAA62DC38CED00F18AD9 /* tot-ios.app */,
+				1BA9F64B2DC3B6EE00CDEAC6 /* tot-ios.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CCE08706B30A4E2EE2BD879 /* Frameworks */ = {
+		6F41D488F56A57A9D354ACED /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E913B6CB37B1E6F25CBB6443 /* Pods_tot_ios.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FBDD02AA50F1A973B3B3C74E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3B9BB4B317FCBBF414FF5C7F /* Pods-tot-ios.debug.xcconfig */,
-				C2971BC1BF8F66442CD84262 /* Pods-tot-ios.release.xcconfig */,
+				655BA761AB62B9E4B025CA5D /* Pods-tot-ios.debug.xcconfig */,
+				82713B159053274F60A794B2 /* Pods-tot-ios.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		909F2A16CB596FC4BE717D1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AD1414D07977D457D36411F /* Pods_tot_ios.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1B93CAA52DC38CED00F18AD9 /* tot-ios */ = {
+		1BA9F64A2DC3B6EE00CDEAC6 /* tot-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B93CAB12DC38CEE00F18AD9 /* Build configuration list for PBXNativeTarget "tot-ios" */;
+			buildConfigurationList = 1BA9F65E2DC3B6EF00CDEAC6 /* Build configuration list for PBXNativeTarget "tot-ios" */;
 			buildPhases = (
-				04DF32DCFB17FFB15EBD6AE1 /* [CP] Check Pods Manifest.lock */,
-				1B93CAA22DC38CED00F18AD9 /* Sources */,
-				1B93CAA32DC38CED00F18AD9 /* Frameworks */,
-				1B93CAA42DC38CED00F18AD9 /* Resources */,
-				63FA6CA0A5D683A0A1E42DA1 /* [CP] Embed Pods Frameworks */,
+				7F15BB734E8A50F38E68A136 /* [CP] Check Pods Manifest.lock */,
+				1BA9F6472DC3B6EE00CDEAC6 /* Sources */,
+				1BA9F6482DC3B6EE00CDEAC6 /* Frameworks */,
+				1BA9F6492DC3B6EE00CDEAC6 /* Resources */,
+				4FA8878B0E6D83E306AC5608 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1B93CAA82DC38CED00F18AD9 /* tot-ios */,
+				1BA9F64D2DC3B6EE00CDEAC6 /* tot-ios */,
 			);
 			name = "tot-ios";
 			productName = "tot-ios";
-			productReference = 1B93CAA62DC38CED00F18AD9 /* tot-ios.app */;
+			productReference = 1BA9F64B2DC3B6EE00CDEAC6 /* tot-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1B93CA9E2DC38CED00F18AD9 /* Project object */ = {
+		1BA9F6432DC3B6EE00CDEAC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					1B93CAA52DC38CED00F18AD9 = {
-						CreatedOnToolsVersion = 16.3;
+					1BA9F64A2DC3B6EE00CDEAC6 = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 1B93CAA12DC38CED00F18AD9 /* Build configuration list for PBXProject "tot-ios" */;
+			buildConfigurationList = 1BA9F6462DC3B6EE00CDEAC6 /* Build configuration list for PBXProject "tot-ios" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 1B93CA9D2DC38CED00F18AD9;
+			mainGroup = 1BA9F6422DC3B6EE00CDEAC6;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1B93CAA72DC38CED00F18AD9 /* Products */;
+			productRefGroup = 1BA9F64C2DC3B6EE00CDEAC6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B93CAA52DC38CED00F18AD9 /* tot-ios */,
+				1BA9F64A2DC3B6EE00CDEAC6 /* tot-ios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1B93CAA42DC38CED00F18AD9 /* Resources */ = {
+		1BA9F6492DC3B6EE00CDEAC6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA9F6352DC3A89900CDEAC6 /* main.lynx.bundle in Resources */,
+				1BA9F6792DC3BAB800CDEAC6 /* main.lynx.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04DF32DCFB17FFB15EBD6AE1 /* [CP] Check Pods Manifest.lock */ = {
+		4FA8878B0E6D83E306AC5608 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F15BB734E8A50F38E68A136 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -168,27 +198,10 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		63FA6CA0A5D683A0A1E42DA1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tot-ios/Pods-tot-ios-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1B93CAA22DC38CED00F18AD9 /* Sources */ = {
+		1BA9F6472DC3B6EE00CDEAC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -198,7 +211,67 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1B93CAAF2DC38CEE00F18AD9 /* Debug */ = {
+		1BA9F65F2DC3B6EF00CDEAC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 655BA761AB62B9E4B025CA5D /* Pods-tot-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JM2QQL9UEN;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tot-ios/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dumontet-eurl.tot-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BA9F6602DC3B6EF00CDEAC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82713B159053274F60A794B2 /* Pods-tot-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JM2QQL9UEN;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tot-ios/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dumontet-eurl.tot-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1BA9F6612DC3B6EF00CDEAC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -233,10 +306,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = JM2QQL9UEN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -251,19 +323,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/tot-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "tot-ios/TotBridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		1B93CAB02DC38CEE00F18AD9 /* Release */ = {
+		1BA9F6622DC3B6EF00CDEAC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,10 +370,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = JM2QQL9UEN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -310,97 +381,39 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/tot-ios-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "tot-ios/TotBridgingHeader.h";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		1B93CAB22DC38CEE00F18AD9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B9BB4B317FCBBF414FF5C7F /* Pods-tot-ios.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM2QQL9UEN;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dumontet-eurl.tot-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		1B93CAB32DC38CEE00F18AD9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2971BC1BF8F66442CD84262 /* Pods-tot-ios.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JM2QQL9UEN;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dumontet-eurl.tot-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B93CAA12DC38CED00F18AD9 /* Build configuration list for PBXProject "tot-ios" */ = {
+		1BA9F6462DC3B6EE00CDEAC6 /* Build configuration list for PBXProject "tot-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1B93CAAF2DC38CEE00F18AD9 /* Debug */,
-				1B93CAB02DC38CEE00F18AD9 /* Release */,
+				1BA9F6612DC3B6EF00CDEAC6 /* Debug */,
+				1BA9F6622DC3B6EF00CDEAC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B93CAB12DC38CEE00F18AD9 /* Build configuration list for PBXNativeTarget "tot-ios" */ = {
+		1BA9F65E2DC3B6EF00CDEAC6 /* Build configuration list for PBXNativeTarget "tot-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1B93CAB22DC38CEE00F18AD9 /* Debug */,
-				1B93CAB32DC38CEE00F18AD9 /* Release */,
+				1BA9F65F2DC3B6EF00CDEAC6 /* Debug */,
+				1BA9F6602DC3B6EF00CDEAC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1B93CA9E2DC38CED00F18AD9 /* Project object */;
+	rootObject = 1BA9F6432DC3B6EE00CDEAC6 /* Project object */;
 }

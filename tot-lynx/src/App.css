@@ -94,6 +94,7 @@ text {
 .Title {
   font-size: 36px;
   font-weight: 700;
+  animation: Logo--spin infinite 20s linear;
 }
 
 .Button {

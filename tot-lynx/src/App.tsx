@@ -38,7 +38,7 @@ export function App(props: {
               <image src={lynxLogo} className="Logo--lynx" />
             )}
           </view>
-          {isVisible && <text className="Title">The One Thing</text>}
+          {isVisible && <text className="Title">The One Thingsss</text>}
         </view>
         <view className="Content">
           <view className="Button" bindtap={handleClick}>
