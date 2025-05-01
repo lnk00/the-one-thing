@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BA9F62B2DC3A21900CDEAC6 /* main.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F62A2DC3A21900CDEAC6 /* main.lynx.bundle */; };
+		1BA9F6352DC3A89900CDEAC6 /* main.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */; };
 		CEFE13F254F65AC53001B7F9 /* Pods_tot_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E913B6CB37B1E6F25CBB6443 /* Pods_tot_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B93CAA62DC38CED00F18AD9 /* tot-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tot-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BA9F62A2DC3A21900CDEAC6 /* main.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = main.lynx.bundle; path = ../main.lynx.bundle; sourceTree = "<group>"; };
+		1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = main.lynx.bundle; path = "../tot-lynx/dist/main.lynx.bundle"; sourceTree = "<group>"; };
 		3B9BB4B317FCBBF414FF5C7F /* Pods-tot-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.debug.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		C2971BC1BF8F66442CD84262 /* Pods-tot-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tot-ios.release.xcconfig"; path = "Target Support Files/Pods-tot-ios/Pods-tot-ios.release.xcconfig"; sourceTree = "<group>"; };
 		E913B6CB37B1E6F25CBB6443 /* Pods_tot_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tot_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +42,7 @@
 		1B93CA9D2DC38CED00F18AD9 = {
 			isa = PBXGroup;
 			children = (
-				1BA9F62A2DC3A21900CDEAC6 /* main.lynx.bundle */,
+				1BA9F6342DC3A89900CDEAC6 /* main.lynx.bundle */,
 				1B93CAA82DC38CED00F18AD9 /* tot-ios */,
 				1B93CAA72DC38CED00F18AD9 /* Products */,
 				FBDD02AA50F1A973B3B3C74E /* Pods */,
@@ -139,7 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA9F62B2DC3A21900CDEAC6 /* main.lynx.bundle in Resources */,
+				1BA9F6352DC3A89900CDEAC6 /* main.lynx.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
