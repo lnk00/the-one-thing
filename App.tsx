@@ -1,11 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -17,13 +11,9 @@ import Animated, {
   withTiming,
   withSpring,
   withSequence,
-  useAnimatedGestureHandler,
 } from 'react-native-reanimated';
 import { Pressable } from 'react-native';
-import {
-  GestureHandlerRootView,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
 import * as Haptics from 'expo-haptics';
 import PaginationIndicator from './PaginationIndicator';
@@ -48,6 +38,9 @@ const NextButton = ({
 }) => {
   // Animation values
   const scale = useSharedValue(1);
+  // Track press timestamp to calculate press duration
+  const pressStartTime = useRef<number>(0);
+  const MIN_PRESS_DURATION = 150; // Minimum time between haptics in ms
 
   // Animated styles for the button container
   const animatedButtonStyle = useAnimatedStyle(() => {
@@ -63,9 +56,20 @@ const NextButton = ({
   };
 
   // Handle button release with bounce animation
-  const handlePress = () => {
-    // Trigger success haptic feedback on successful press
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+  const handlePress = async () => {
+    const pressDuration = Date.now() - pressStartTime.current;
+
+    // If press was very quick, add a delay before second haptic
+    // This prevents the haptics from blending together
+    if (pressDuration < MIN_PRESS_DURATION) {
+      const delayNeeded = MIN_PRESS_DURATION - pressDuration;
+      setTimeout(() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+      }, delayNeeded);
+    } else {
+      // If press was long enough, trigger haptic immediately
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    }
 
     // Sequence of animations:
     // 1. Quick scale up (from current scale -> 1.1)
@@ -90,6 +94,9 @@ const NextButton = ({
     <Pressable
       onPress={handlePress}
       onPressIn={() => {
+        // Record press start time
+        pressStartTime.current = Date.now();
+
         // Trigger haptic feedback on press down
         triggerHaptic();
 
