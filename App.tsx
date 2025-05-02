@@ -70,7 +70,10 @@ const PageComponent = ({
       <Animated.Text style={[styles.pageText, animatedTextStyle]}>
         This app is designed to help you{' '}
         <Text style={styles.boldText}>focus </Text>
-        on what truly matters, inspired by the principles of{' '}
+        on what truly matters.
+      </Animated.Text>
+      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
+        Inspired by the principles of{' '}
         <Text style={styles.boldText}>The One Thing.</Text>
       </Animated.Text>
       <Animated.Text style={[styles.pageText, animatedTextStyle]}>
