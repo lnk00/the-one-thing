@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -32,6 +35,8 @@ const PageComponent = ({
   index,
   scrollX,
 }: { page: string; index: number; scrollX: SharedValue<number> }) => {
+  const insets = useSafeAreaInsets();
+
   const inputRange = [
     (index - 1) * SCREEN_WIDTH,
     index * SCREEN_WIDTH,
@@ -52,9 +57,15 @@ const PageComponent = ({
   });
 
   return (
-    <View style={[styles.pageContainer]}>
+    <View style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}>
       <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        {page}
+        This app is designed to help you focus on what truly matters, inspired
+        by the principles of "The One Thing."
+      </Animated.Text>
+      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
+        Here, you'll discover how to clarify your biggest goals and break them
+        down into actionable steps, so you can make meaningful progress every
+        day.
       </Animated.Text>
     </View>
   );
@@ -143,12 +154,14 @@ const styles = StyleSheet.create({
   pageContainer: {
     width: SCREEN_WIDTH,
     height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingHorizontal: 24,
+    gap: 24,
   },
   pageText: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: '700',
   },
   bottomControlsContainer: {
     position: 'absolute',
