@@ -18,7 +18,7 @@ import PagerIndicator from './PagerIndicator';
 import PagerButton from './PagerButton';
 import LottieView from 'lottie-react-native';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const PAGES = [
   'Page one',
   'Page two',
@@ -41,25 +41,25 @@ export default function Root() {
 const PageComponent = ({
   page,
   index,
-  scrollX,
-}: { page: string; index: number; scrollX: SharedValue<number> }) => {
+  scrollY,
+}: { page: string; index: number; scrollY: SharedValue<number> }) => {
   const insets = useSafeAreaInsets();
 
   const inputRange = [
-    (index - 1) * SCREEN_WIDTH,
-    index * SCREEN_WIDTH,
-    (index + 1) * SCREEN_WIDTH,
+    (index - 1) * SCREEN_HEIGHT,
+    index * SCREEN_HEIGHT,
+    (index + 1) * SCREEN_HEIGHT,
   ];
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    const translateY = interpolate(scrollX.value, inputRange, [100, 0, -100]);
+    const translateX = interpolate(scrollY.value, inputRange, [100, 0, -100]);
 
-    const opacity = interpolate(scrollX.value, inputRange, [0, 1, 0]);
+    const opacity = interpolate(scrollY.value, inputRange, [0, 1, 0]);
 
-    const scale = interpolate(scrollX.value, inputRange, [0.8, 1, 0.8]);
+    const scale = interpolate(scrollY.value, inputRange, [0.8, 1, 0.8]);
 
     return {
-      transform: [{ translateY }, { scale }],
+      transform: [{ translateX }, { scale }],
       opacity,
     };
   });
@@ -88,16 +88,16 @@ const PageComponent = ({
 };
 
 function App() {
-  const scrollX = useSharedValue(0);
+  const scrollY = useSharedValue(0);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
-      scrollX.value = event.contentOffset.x;
+      scrollY.value = event.contentOffset.y;
     },
     onMomentumEnd: (event) => {
-      const newIndex = Math.round(event.contentOffset.x / SCREEN_WIDTH);
+      const newIndex = Math.round(event.contentOffset.y / SCREEN_HEIGHT);
       runOnJS(setCurrentIndex)(newIndex);
     },
   });
@@ -133,18 +133,17 @@ function App() {
         ref={flatListRef}
         data={PAGES}
         renderItem={({ item, index }) => (
-          <PageComponent page={item} index={index} scrollX={scrollX} />
+          <PageComponent page={item} index={index} scrollY={scrollY} />
         )}
         keyExtractor={(_, index) => index.toString()}
-        horizontal
         pagingEnabled
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
         scrollEnabled={true}
       />
       <View style={styles.bottomControlsContainer}>
-        <PagerIndicator scrollX={scrollX} totalIndex={PAGES.length} />
+        <PagerIndicator scrollX={scrollY} totalIndex={PAGES.length} />
         <View style={styles.buttonsContainer}>
           <PagerButton
             type="back"
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
   },
   pageContainer: {
     width: SCREEN_WIDTH,
-    height: '100%',
+    height: SCREEN_HEIGHT,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     paddingHorizontal: 24,

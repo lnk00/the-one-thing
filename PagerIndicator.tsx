@@ -11,15 +11,15 @@ export default function PagerIndicator({
   scrollX: SharedValue<number>;
   totalIndex: number;
 }) {
-  const { width: SCREEN_WIDTH } = Dimensions.get('window');
+  const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
   return (
     <View style={styles.paginationContainer}>
       {Array.from(Array(totalIndex)).map((_, index) => {
         const animatedDotStyle = useAnimatedStyle(() => {
-          const pagePosition = index * SCREEN_WIDTH;
+          const pagePosition = index * SCREEN_HEIGHT;
           const distance = Math.abs(scrollX.value - pagePosition);
-          const progress = Math.max(0, 1 - distance / SCREEN_WIDTH);
+          const progress = Math.max(0, 1 - distance / SCREEN_HEIGHT);
           const width = 10 + progress * 20;
           const opacity = 0.2 + progress * 0.5;
 
