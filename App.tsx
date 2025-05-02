@@ -16,6 +16,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
 import PagerButton from './PagerButton';
+import LottieView from 'lottie-react-native';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
@@ -64,6 +65,18 @@ const PageComponent = ({
         on what truly matters, inspired by the principles of{' '}
         <Text style={styles.boldText}>The One Thing.</Text>
       </Animated.Text>
+      <View style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+        <LottieView
+          autoPlay
+          style={{
+            width: SCREEN_WIDTH,
+            height: SCREEN_WIDTH,
+          }}
+          source={{
+            uri: 'https://lottie.host/8f2b5f8a-7409-4c08-9ab4-8a7dc9e6f526/UBmD68TnhR.lottie',
+          }}
+        />
+      </View>
     </View>
   );
 };
