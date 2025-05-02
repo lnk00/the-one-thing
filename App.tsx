@@ -12,7 +12,7 @@ import Animated, {
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
-import PagerButton, { ButtonType } from './PagerButton';
+import PagerButton from './PagerButton';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
@@ -114,6 +114,7 @@ function App() {
         showsHorizontalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
+        scrollEnabled={false}
       />
       <View style={styles.bottomControlsContainer}>
         <PagerIndicator scrollX={scrollX} totalIndex={PAGES.length} />
