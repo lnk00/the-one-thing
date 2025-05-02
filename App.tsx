@@ -31,16 +31,20 @@ const Pagination = ({
   return (
     <View style={styles.paginationContainer}>
       {PAGES.map((_, index) => {
-        const inputRange = [
-          (index - 1) * SCREEN_WIDTH,
-          index * SCREEN_WIDTH,
-          (index + 1) * SCREEN_WIDTH,
-        ];
-
         const animatedDotStyle = useAnimatedStyle(() => {
-          const width = interpolate(scrollX.value, inputRange, [20, 40, 20]);
+          const pagePosition = index * SCREEN_WIDTH;
+          const distance = Math.abs(scrollX.value - pagePosition);
 
-          const opacity = interpolate(scrollX.value, inputRange, [0.5, 1, 0.5]);
+          const isActive = distance < SCREEN_WIDTH / 2;
+
+          // Calculate progress value (0 = inactive, 1 = fully active)
+          const progress = Math.max(0, 1 - distance / SCREEN_WIDTH);
+
+          // Size goes from 20 (inactive) to 40 (active)
+          const width = 20 + progress * 20;
+
+          // Opacity goes from 0.5 (inactive) to 1 (active)
+          const opacity = 0.2 + progress * 0.5;
 
           return {
             width,
@@ -154,7 +158,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 20,
     borderRadius: 4,
-    backgroundColor: '#aaa',
+    backgroundColor: '#000',
     marginHorizontal: 4,
   },
 });
