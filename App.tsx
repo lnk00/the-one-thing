@@ -19,7 +19,14 @@ import PagerButton from './PagerButton';
 import LottieView from 'lottie-react-native';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
+const PAGES = [
+  'Page one',
+  'Page two',
+  'Page three',
+  'Page four',
+  'Page five',
+  'Page six',
+];
 
 export default function Root() {
   return (
@@ -59,24 +66,20 @@ const PageComponent = ({
 
   return (
     <View style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}>
+      <View style={{ flex: 1 }} />
       <Animated.Text style={[styles.pageText, animatedTextStyle]}>
         This app is designed to help you{' '}
         <Text style={styles.boldText}>focus </Text>
         on what truly matters, inspired by the principles of{' '}
         <Text style={styles.boldText}>The One Thing.</Text>
       </Animated.Text>
-      <View style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-        <LottieView
-          autoPlay
-          style={{
-            width: SCREEN_WIDTH,
-            height: SCREEN_WIDTH,
-          }}
-          source={{
-            uri: 'https://lottie.host/8f2b5f8a-7409-4c08-9ab4-8a7dc9e6f526/UBmD68TnhR.lottie',
-          }}
-        />
-      </View>
+      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
+        We’ll guide you to identify your{' '}
+        <Text style={styles.boldText}>long-term </Text>
+        vision and turn it into practical daily{' '}
+        <Text style={styles.boldText}>actions.</Text>
+      </Animated.Text>
+      <View style={{ flex: 2 }} />
     </View>
   );
 };
@@ -135,7 +138,7 @@ function App() {
         showsHorizontalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        scrollEnabled={false}
+        scrollEnabled={true}
       />
       <View style={styles.bottomControlsContainer}>
         <PagerIndicator scrollX={scrollX} totalIndex={PAGES.length} />

@@ -20,7 +20,7 @@ export default function PagerIndicator({
           const pagePosition = index * SCREEN_WIDTH;
           const distance = Math.abs(scrollX.value - pagePosition);
           const progress = Math.max(0, 1 - distance / SCREEN_WIDTH);
-          const width = 20 + progress * 40;
+          const width = 10 + progress * 20;
           const opacity = 0.2 + progress * 0.5;
 
           return {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   paginationDot: {
     height: 8,
-    width: 20,
+    width: 10,
     borderRadius: 4,
     backgroundColor: '#000',
     marginHorizontal: 4,
