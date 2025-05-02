@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -59,13 +59,10 @@ const PageComponent = ({
   return (
     <View style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}>
       <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        This app is designed to help you focus on what truly matters, inspired
-        by the principles of "The One Thing."
-      </Animated.Text>
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        Here, you'll discover how to clarify your biggest goals and break them
-        down into actionable steps, so you can make meaningful progress every
-        day.
+        This app is designed to help you{' '}
+        <Text style={styles.boldText}>focus </Text>
+        on what truly matters, inspired by the principles of{' '}
+        <Text style={styles.boldText}>The One Thing.</Text>
       </Animated.Text>
     </View>
   );
@@ -161,7 +158,11 @@ const styles = StyleSheet.create({
   },
   pageText: {
     fontSize: 32,
-    fontWeight: '700',
+    fontWeight: '600',
+  },
+  boldText: {
+    fontSize: 32,
+    fontWeight: '900', // Maximum boldness
   },
   bottomControlsContainer: {
     position: 'absolute',
