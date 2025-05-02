@@ -1,5 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -8,6 +14,7 @@ import Animated, {
   interpolate,
   runOnJS,
   type SharedValue,
+  withTiming,
 } from 'react-native-reanimated';
 import { useRef, useState } from 'react';
 import PaginationIndicator from './PaginationIndicator';
@@ -22,6 +29,33 @@ export default function Root() {
     </SafeAreaProvider>
   );
 }
+
+const NextButton = ({
+  onPress,
+  currentIndex,
+  totalPages,
+}: {
+  onPress: () => void;
+  currentIndex: number;
+  totalPages: number;
+}) => {
+  // Hide button on last page
+  const isLastPage = currentIndex === totalPages - 1;
+
+  if (isLastPage) {
+    return null;
+  }
+
+  return (
+    <TouchableOpacity
+      style={styles.nextButton}
+      onPress={onPress}
+      activeOpacity={0.8}
+    >
+      <Text style={styles.nextButtonText}>Next</Text>
+    </TouchableOpacity>
+  );
+};
 
 const PageComponent = ({
   page,
@@ -59,7 +93,7 @@ const PageComponent = ({
 function App() {
   const scrollX = useSharedValue(0);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
-  const [_currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -70,6 +104,21 @@ function App() {
       runOnJS(setCurrentIndex)(newIndex);
     },
   });
+
+  // Function to handle next button press
+  const handleNextPress = () => {
+    if (currentIndex < PAGES.length - 1) {
+      const nextIndex = currentIndex + 1;
+      // Animate scroll to next page
+      flatListRef.current?.scrollToIndex({
+        index: nextIndex,
+        animated: true,
+      });
+
+      // Update current index
+      setCurrentIndex(nextIndex);
+    }
+  };
 
   return (
     <View style={[styles.container]}>
@@ -87,7 +136,14 @@ function App() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />
-      <PaginationIndicator scrollX={scrollX} totalIndex={PAGES.length} />
+      <View style={styles.bottomControlsContainer}>
+        <PaginationIndicator scrollX={scrollX} totalIndex={PAGES.length} />
+        <NextButton
+          onPress={handleNextPress}
+          currentIndex={currentIndex}
+          totalPages={PAGES.length}
+        />
+      </View>
     </View>
   );
 }
@@ -107,18 +163,28 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
   },
-  paginationContainer: {
+  bottomControlsContainer: {
     position: 'absolute',
     bottom: 64,
-    left: 44,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 44,
+    height: 50,
+  },
+  nextButton: {
+    backgroundColor: '#000',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 30,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  paginationDot: {
-    height: 8,
-    width: 20,
-    borderRadius: 4,
-    backgroundColor: '#000',
-    marginHorizontal: 4,
+  nextButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

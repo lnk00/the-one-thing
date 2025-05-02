@@ -41,9 +41,6 @@ export default function PaginationIndicator({
 }
 const styles = StyleSheet.create({
   paginationContainer: {
-    position: 'absolute',
-    bottom: 64,
-    left: 44,
     flexDirection: 'row',
     alignItems: 'center',
   },
