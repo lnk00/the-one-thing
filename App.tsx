@@ -7,8 +7,10 @@ import Animated, {
   useAnimatedStyle,
   interpolate,
   runOnJS,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { useRef, useState } from 'react';
+import PaginationIndicator from './PaginationIndicator';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
@@ -21,53 +23,11 @@ export default function Root() {
   );
 }
 
-const Pagination = ({
-  scrollX,
-  currentIndex,
-}: {
-  scrollX: Animated.SharedValue<number>;
-  currentIndex: number;
-}) => {
-  return (
-    <View style={styles.paginationContainer}>
-      {PAGES.map((_, index) => {
-        const animatedDotStyle = useAnimatedStyle(() => {
-          const pagePosition = index * SCREEN_WIDTH;
-          const distance = Math.abs(scrollX.value - pagePosition);
-
-          const isActive = distance < SCREEN_WIDTH / 2;
-
-          // Calculate progress value (0 = inactive, 1 = fully active)
-          const progress = Math.max(0, 1 - distance / SCREEN_WIDTH);
-
-          // Size goes from 20 (inactive) to 40 (active)
-          const width = 20 + progress * 20;
-
-          // Opacity goes from 0.5 (inactive) to 1 (active)
-          const opacity = 0.2 + progress * 0.5;
-
-          return {
-            width,
-            opacity,
-          };
-        });
-
-        return (
-          <Animated.View
-            key={index.toString()}
-            style={[styles.paginationDot, animatedDotStyle]}
-          />
-        );
-      })}
-    </View>
-  );
-};
-
 const PageComponent = ({
   page,
   index,
   scrollX,
-}: { page: string; index: number; scrollX: Animated.SharedValue<number> }) => {
+}: { page: string; index: number; scrollX: SharedValue<number> }) => {
   const inputRange = [
     (index - 1) * SCREEN_WIDTH,
     index * SCREEN_WIDTH,
@@ -99,7 +59,7 @@ const PageComponent = ({
 function App() {
   const scrollX = useSharedValue(0);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [_currentIndex, setCurrentIndex] = useState(0);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -127,7 +87,7 @@ function App() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />
-      <Pagination scrollX={scrollX} currentIndex={currentIndex} />
+      <PaginationIndicator scrollX={scrollX} totalIndex={PAGES.length} />
     </View>
   );
 }
