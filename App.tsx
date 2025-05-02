@@ -21,6 +21,44 @@ export default function Root() {
   );
 }
 
+const Pagination = ({
+  scrollX,
+  currentIndex,
+}: {
+  scrollX: Animated.SharedValue<number>;
+  currentIndex: number;
+}) => {
+  return (
+    <View style={styles.paginationContainer}>
+      {PAGES.map((_, index) => {
+        const inputRange = [
+          (index - 1) * SCREEN_WIDTH,
+          index * SCREEN_WIDTH,
+          (index + 1) * SCREEN_WIDTH,
+        ];
+
+        const animatedDotStyle = useAnimatedStyle(() => {
+          const width = interpolate(scrollX.value, inputRange, [20, 40, 20]);
+
+          const opacity = interpolate(scrollX.value, inputRange, [0.5, 1, 0.5]);
+
+          return {
+            width,
+            opacity,
+          };
+        });
+
+        return (
+          <Animated.View
+            key={index.toString()}
+            style={[styles.paginationDot, animatedDotStyle]}
+          />
+        );
+      })}
+    </View>
+  );
+};
+
 const PageComponent = ({
   page,
   index,
@@ -85,6 +123,7 @@ function App() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />
+      <Pagination scrollX={scrollX} currentIndex={currentIndex} />
     </View>
   );
 }
@@ -103,5 +142,19 @@ const styles = StyleSheet.create({
   pageText: {
     fontSize: 32,
     fontWeight: 'bold',
+  },
+  paginationContainer: {
+    position: 'absolute',
+    bottom: 64,
+    left: 44,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  paginationDot: {
+    height: 8,
+    width: 20,
+    borderRadius: 4,
+    backgroundColor: '#aaa',
+    marginHorizontal: 4,
   },
 });
