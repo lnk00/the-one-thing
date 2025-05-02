@@ -12,7 +12,7 @@ import Animated, {
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
-import PagerButton from './PagerButton';
+import PagerButton, { ButtonType } from './PagerButton';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
@@ -87,6 +87,18 @@ function App() {
     }
   };
 
+  const handleBackPress = () => {
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1;
+      flatListRef.current?.scrollToIndex({
+        index: prevIndex,
+        animated: true,
+      });
+
+      setCurrentIndex(prevIndex);
+    }
+  };
+
   return (
     <View style={[styles.container]}>
       <StatusBar style="auto" />
@@ -105,7 +117,18 @@ function App() {
       />
       <View style={styles.bottomControlsContainer}>
         <PagerIndicator scrollX={scrollX} totalIndex={PAGES.length} />
-        <PagerButton onPress={handleNextPress} />
+        <View style={styles.buttonsContainer}>
+          <PagerButton
+            type="back"
+            onPress={handleBackPress}
+            disabled={currentIndex === 0}
+          />
+          <PagerButton
+            type="next"
+            onPress={handleNextPress}
+            disabled={currentIndex === PAGES.length - 1}
+          />
+        </View>
       </View>
     </View>
   );
@@ -134,7 +157,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 44,
+    paddingHorizontal: 24,
     height: 50,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
   },
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -9,11 +9,18 @@ import Animated, {
 import { Pressable } from 'react-native';
 import { useRef } from 'react';
 import * as Haptics from 'expo-haptics';
+import { AntDesign } from '@expo/vector-icons';
+
+export type ButtonType = 'next' | 'back';
 
 export default function PagerButton({
   onPress,
+  type = 'next',
+  disabled = false
 }: {
   onPress: () => void;
+  type?: ButtonType;
+  disabled?: boolean;
 }) {
   const scale = useSharedValue(1);
   const pressStartTime = useRef<number>(0);
@@ -22,6 +29,7 @@ export default function PagerButton({
   const animatedButtonStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
+      opacity: disabled ? 0.5 : 1,
     };
   });
 
@@ -30,6 +38,8 @@ export default function PagerButton({
   };
 
   const handlePress = async () => {
+    if (disabled) return;
+    
     const pressDuration = Date.now() - pressStartTime.current;
 
     if (pressDuration < MIN_PRESS_DURATION) {
@@ -58,25 +68,34 @@ export default function PagerButton({
     <Pressable
       onPress={handlePress}
       onPressIn={() => {
+        if (disabled) return;
         pressStartTime.current = Date.now();
-
         triggerHaptic();
-
         scale.value = withTiming(0.95, { duration: 100 });
       }}
       onPressOut={() => {
+        if (disabled) return;
         scale.value = withTiming(1, { duration: 150 });
       }}
     >
-      <Animated.View style={[styles.nextButton, animatedButtonStyle]}>
-        <Text style={styles.nextButtonText}>Next</Text>
+      <Animated.View 
+        style={[
+          type === 'next' ? styles.buttonNext : styles.buttonBack,
+          animatedButtonStyle
+        ]}
+      >
+        {type === 'next' ? (
+          <Text style={styles.buttonText}>Next</Text>
+        ) : (
+          <AntDesign name="arrowleft" size={20} color="white" />
+        )}
       </Animated.View>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  nextButton: {
+  buttonNext: {
     backgroundColor: '#000',
     paddingVertical: 12,
     paddingHorizontal: 24,
@@ -84,7 +103,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  nextButtonText: {
+  buttonBack: {
+    backgroundColor: '#000',
+    width: 44,
+    height: 44,
+    borderRadius: 22, // Half of width/height for circular shape
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
