@@ -16,7 +16,7 @@ export type ButtonType = 'next' | 'back';
 export default function PagerButton({
   onPress,
   type = 'next',
-  disabled = false
+  disabled = false,
 }: {
   onPress: () => void;
   type?: ButtonType;
@@ -39,7 +39,7 @@ export default function PagerButton({
 
   const handlePress = async () => {
     if (disabled) return;
-    
+
     const pressDuration = Date.now() - pressStartTime.current;
 
     if (pressDuration < MIN_PRESS_DURATION) {
@@ -78,10 +78,10 @@ export default function PagerButton({
         scale.value = withTiming(1, { duration: 150 });
       }}
     >
-      <Animated.View 
+      <Animated.View
         style={[
           type === 'next' ? styles.buttonNext : styles.buttonBack,
-          animatedButtonStyle
+          animatedButtonStyle,
         ]}
       >
         {type === 'next' ? (
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     width: 44,
     height: 44,
-    borderRadius: 22, // Half of width/height for circular shape
+    borderRadius: 22,
     justifyContent: 'center',
     alignItems: 'center',
   },
