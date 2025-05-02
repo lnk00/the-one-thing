@@ -62,10 +62,10 @@ const NextButton = ({
     };
   });
 
-  // Handle button press with animation
+  // Handle button release with bounce animation
   const handlePress = () => {
     // Sequence of animations:
-    // 1. Quick scale up (1.0 -> 1.1)
+    // 1. Quick scale up (from current scale -> 1.1)
     // 2. Bouncy scale down to normal (1.1 -> 1.0)
     scale.value = withSequence(
       // Quick scale up
@@ -88,7 +88,20 @@ const NextButton = ({
   }
 
   return (
-    <Pressable onPress={handlePress}>
+    <Pressable
+      onPress={handlePress}
+      onPressIn={() => {
+        // When pressed down, scale down slightly to 0.95
+        scale.value = withTiming(0.95, { duration: 100 });
+      }}
+      onPressOut={() => {
+        // If press is cancelled (not resulting in onPress),
+        // animate back to normal size
+        if (!isLastPage) {
+          scale.value = withTiming(1, { duration: 150 });
+        }
+      }}
+    >
       <Animated.View style={[styles.nextButton, animatedButtonStyle]}>
         <Text style={styles.nextButtonText}>Next</Text>
       </Animated.View>
