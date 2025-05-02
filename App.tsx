@@ -52,14 +52,12 @@ const PageComponent = ({
   ];
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    const translateX = interpolate(scrollY.value, inputRange, [100, 0, -100]);
-
     const opacity = interpolate(scrollY.value, inputRange, [0, 1, 0]);
 
-    const scale = interpolate(scrollY.value, inputRange, [0.8, 1, 0.8]);
+    const scale = interpolate(scrollY.value, inputRange, [0.6, 1, 0.6]);
 
     return {
-      transform: [{ translateX }, { scale }],
+      transform: [{ scale }],
       opacity,
     };
   });
