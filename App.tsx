@@ -25,6 +25,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
+import * as Haptics from 'expo-haptics';
 import PaginationIndicator from './PaginationIndicator';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -42,16 +43,9 @@ export default function Root() {
 
 const NextButton = ({
   onPress,
-  currentIndex,
-  totalPages,
 }: {
   onPress: () => void;
-  currentIndex: number;
-  totalPages: number;
 }) => {
-  // Hide button on last page
-  const isLastPage = currentIndex === totalPages - 1;
-
   // Animation values
   const scale = useSharedValue(1);
 
@@ -62,8 +56,17 @@ const NextButton = ({
     };
   });
 
+  // Trigger haptic feedback
+  const triggerHaptic = () => {
+    // Use impact feedback - medium intensity feels good for button presses
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  };
+
   // Handle button release with bounce animation
   const handlePress = () => {
+    // Trigger success haptic feedback on successful press
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
     // Sequence of animations:
     // 1. Quick scale up (from current scale -> 1.1)
     // 2. Bouncy scale down to normal (1.1 -> 1.0)
@@ -83,23 +86,20 @@ const NextButton = ({
     onPress();
   };
 
-  if (isLastPage) {
-    return null;
-  }
-
   return (
     <Pressable
       onPress={handlePress}
       onPressIn={() => {
+        // Trigger haptic feedback on press down
+        triggerHaptic();
+
         // When pressed down, scale down slightly to 0.95
         scale.value = withTiming(0.95, { duration: 100 });
       }}
       onPressOut={() => {
         // If press is cancelled (not resulting in onPress),
         // animate back to normal size
-        if (!isLastPage) {
-          scale.value = withTiming(1, { duration: 150 });
-        }
+        scale.value = withTiming(1, { duration: 150 });
       }}
     >
       <Animated.View style={[styles.nextButton, animatedButtonStyle]}>
@@ -190,11 +190,7 @@ function App() {
       />
       <View style={styles.bottomControlsContainer}>
         <PaginationIndicator scrollX={scrollX} totalIndex={PAGES.length} />
-        <NextButton
-          onPress={handleNextPress}
-          currentIndex={currentIndex}
-          totalPages={PAGES.length}
-        />
+        <NextButton onPress={handleNextPress} />
       </View>
     </View>
   );
