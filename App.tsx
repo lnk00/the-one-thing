@@ -15,7 +15,15 @@ import Animated, {
   runOnJS,
   type SharedValue,
   withTiming,
+  withSpring,
+  withSequence,
+  useAnimatedGestureHandler,
 } from 'react-native-reanimated';
+import { Pressable } from 'react-native';
+import {
+  GestureHandlerRootView,
+  TouchableWithoutFeedback,
+} from 'react-native-gesture-handler';
 import { useRef, useState } from 'react';
 import PaginationIndicator from './PaginationIndicator';
 
@@ -25,7 +33,9 @@ const PAGES = ['Page one', 'Page two', 'Page three', 'Page four'];
 export default function Root() {
   return (
     <SafeAreaProvider>
-      <App />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <App />
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 }
@@ -42,18 +52,47 @@ const NextButton = ({
   // Hide button on last page
   const isLastPage = currentIndex === totalPages - 1;
 
+  // Animation values
+  const scale = useSharedValue(1);
+
+  // Animated styles for the button container
+  const animatedButtonStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+    };
+  });
+
+  // Handle button press with animation
+  const handlePress = () => {
+    // Sequence of animations:
+    // 1. Quick scale up (1.0 -> 1.1)
+    // 2. Bouncy scale down to normal (1.1 -> 1.0)
+    scale.value = withSequence(
+      // Quick scale up
+      withTiming(1.1, { duration: 100 }),
+      // Bouncy scale down with spring physics
+      withSpring(1, {
+        damping: 8, // Lower damping = more bounce
+        stiffness: 150, // Higher stiffness = faster bounce
+        mass: 0.5, // Lower mass = quicker movement
+        overshootClamping: false, // Allow overshooting for bounce effect
+      }),
+    );
+
+    // Call the original onPress handler
+    onPress();
+  };
+
   if (isLastPage) {
     return null;
   }
 
   return (
-    <TouchableOpacity
-      style={styles.nextButton}
-      onPress={onPress}
-      activeOpacity={0.8}
-    >
-      <Text style={styles.nextButtonText}>Next</Text>
-    </TouchableOpacity>
+    <Pressable onPress={handlePress}>
+      <Animated.View style={[styles.nextButton, animatedButtonStyle]}>
+        <Text style={styles.nextButtonText}>Next</Text>
+      </Animated.View>
+    </Pressable>
   );
 };
 
