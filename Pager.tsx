@@ -8,6 +8,7 @@ import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
 import PagerButton from './PagerButton';
 import PageIntro from './PageIntro';
+import PageLife from './PageLife';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -78,7 +79,7 @@ export default function Pager() {
             return <PageIntro index={index} scrollY={scrollY} />;
           }
 
-          return <PageIntro index={index} scrollY={scrollY} />;
+          return <PageLife index={index} scrollY={scrollY} />;
         }}
         keyExtractor={(_, index) => index.toString()}
         pagingEnabled
