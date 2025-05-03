@@ -3,12 +3,16 @@ import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   runOnJS,
+  useAnimatedKeyboard,
+  useAnimatedStyle,
+  KeyboardState,
 } from 'react-native-reanimated';
 import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
 import PagerButton from './PagerButton';
 import PageIntro from './PageIntro';
 import PageLife from './PageLife';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -34,6 +38,19 @@ export default function Pager() {
   const scrollY = useSharedValue(0);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const keyboard = useAnimatedKeyboard();
+
+  const animatedKeyboardStyles = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY:
+          keyboard.state.value === KeyboardState.OPENING ||
+          keyboard.state.value === KeyboardState.OPEN
+            ? -keyboard.height.value + 50
+            : -keyboard.height.value,
+      },
+    ],
+  }));
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -88,7 +105,9 @@ export default function Pager() {
         scrollEventThrottle={16}
         scrollEnabled={true}
       />
-      <View style={styles.bottomControlsContainer}>
+      <Animated.View
+        style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
+      >
         <PagerIndicator scrollX={scrollY} totalIndex={PAGES.length} />
         <View style={styles.buttonsContainer}>
           <PagerButton
@@ -102,7 +121,7 @@ export default function Pager() {
             disabled={currentIndex === PAGES.length - 1}
           />
         </View>
-      </View>
+      </Animated.View>
     </View>
   );
 }
