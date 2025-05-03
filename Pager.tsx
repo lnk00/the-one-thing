@@ -1,72 +1,33 @@
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
-  useAnimatedStyle,
-  interpolate,
   runOnJS,
-  type SharedValue,
 } from 'react-native-reanimated';
 import { useRef, useState } from 'react';
 import PagerIndicator from './PagerIndicator';
 import PagerButton from './PagerButton';
+import PageIntro from './PageIntro';
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
-const PAGES = [
-  'Page one',
-  'Page two',
-  'Page three',
-  'Page four',
-  'Page five',
-  'Page six',
+type PageType =
+  | 'PAGE_INTRO'
+  | 'PAGE_LIFE'
+  | 'PAGE_YEARS'
+  | 'PAGE_YEAR'
+  | 'PAGE_MONTH'
+  | 'PAGE_WEEK'
+  | 'PAGE_DAY';
+
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+const PAGES: Array<PageType> = [
+  'PAGE_INTRO',
+  'PAGE_LIFE',
+  'PAGE_YEARS',
+  'PAGE_YEAR',
+  'PAGE_MONTH',
+  'PAGE_WEEK',
+  'PAGE_DAY',
 ];
-
-const PageComponent = ({
-  index,
-  scrollY,
-}: { index: number; scrollY: SharedValue<number> }) => {
-  const insets = useSafeAreaInsets();
-
-  const inputRange = [
-    (index - 1) * SCREEN_HEIGHT,
-    index * SCREEN_HEIGHT,
-    (index + 1) * SCREEN_HEIGHT,
-  ];
-
-  const animatedTextStyle = useAnimatedStyle(() => {
-    const opacity = interpolate(scrollY.value, inputRange, [0, 1, 0]);
-
-    const scale = interpolate(scrollY.value, inputRange, [0.6, 1, 0.6]);
-
-    return {
-      transform: [{ scale }],
-      opacity,
-    };
-  });
-
-  return (
-    <View style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}>
-      <View style={{ flex: 1 }} />
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        This app is designed to help you{' '}
-        <Text style={styles.boldText}>focus </Text>
-        on what truly matters.
-      </Animated.Text>
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        Inspired by the principles of{' '}
-        <Text style={styles.boldText}>The One Thing.</Text>
-      </Animated.Text>
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        We’ll guide you to identify your{' '}
-        <Text style={styles.boldText}>long-term </Text>
-        vision and turn it into practical daily{' '}
-        <Text style={styles.boldText}>actions.</Text>
-      </Animated.Text>
-      <View style={{ flex: 2 }} />
-    </View>
-  );
-};
 
 export default function Pager() {
   const scrollY = useSharedValue(0);
@@ -112,9 +73,13 @@ export default function Pager() {
       <Animated.FlatList
         ref={flatListRef}
         data={PAGES}
-        renderItem={({ index }) => (
-          <PageComponent index={index} scrollY={scrollY} />
-        )}
+        renderItem={({ item, index }) => {
+          if (item === 'PAGE_INTRO') {
+            return <PageIntro index={index} scrollY={scrollY} />;
+          }
+
+          return <PageIntro index={index} scrollY={scrollY} />;
+        }}
         keyExtractor={(_, index) => index.toString()}
         pagingEnabled
         showsVerticalScrollIndicator={false}
@@ -144,22 +109,6 @@ export default function Pager() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  pageContainer: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingHorizontal: 24,
-    gap: 24,
-  },
-  pageText: {
-    fontSize: 32,
-    fontWeight: '600',
-  },
-  boldText: {
-    fontSize: 32,
-    fontWeight: '900',
   },
   bottomControlsContainer: {
     position: 'absolute',
