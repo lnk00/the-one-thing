@@ -51,7 +51,7 @@ export default function PageLife({
         Your Life Goals
       </Animated.Text>
 
-      <View style={styles.chatContainer}>
+      <Animated.View style={[styles.chatContainer, animatedTextStyle]}>
         <View style={styles.messageContainer}>
           <Text style={styles.messageText}>
             Write down one life goal for each domains you want to perform in.
@@ -68,9 +68,9 @@ export default function PageLife({
             <Text style={styles.learnMoreText}>Learn more</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animated.View>
 
-      <View style={styles.inputContainer}>
+      <Animated.View style={[styles.inputContainer, animatedTextStyle]}>
         <TextInput
           style={styles.textInput}
           value={inputValue}
@@ -79,11 +79,11 @@ export default function PageLife({
           placeholderTextColor="#A0A0A0"
           multiline
         />
-      </View>
-      <Text style={styles.hintText}>
+      </Animated.View>
+      <Animated.Text style={[styles.hintText, animatedTextStyle]}>
         Write it the way you want, our AI make sure to categorize each of your
         goals.
-      </Text>
+      </Animated.Text>
       <View style={{ flex: 1 }} />
     </KeyboardAvoidingView>
   );
