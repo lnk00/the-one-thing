@@ -13,6 +13,7 @@ import PagerButton from './PagerButton';
 import PageIntro from './PageIntro';
 import PageLife from './PageLife';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { BlurView } from 'expo-blur';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -123,19 +124,21 @@ export default function Pager() {
       <Animated.View
         style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
       >
-        <PagerIndicator scrollX={scrollY} totalIndex={PAGES.length} />
-        <View style={styles.buttonsContainer}>
-          <PagerButton
-            type="back"
-            onPress={handleBackPress}
-            disabled={currentIndex === 0}
-          />
-          <PagerButton
-            type="next"
-            onPress={handleNextPress}
-            disabled={currentIndex === PAGES.length - 1}
-          />
-        </View>
+        <BlurView intensity={10} style={styles.blurView}>
+          <PagerIndicator scrollX={scrollY} totalIndex={PAGES.length} />
+          <View style={styles.buttonsContainer}>
+            <PagerButton
+              type="back"
+              onPress={handleBackPress}
+              disabled={currentIndex === 0}
+            />
+            <PagerButton
+              type="next"
+              onPress={handleNextPress}
+              disabled={currentIndex === PAGES.length - 1}
+            />
+          </View>
+        </BlurView>
       </Animated.View>
     </View>
   );
@@ -150,6 +153,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  blurView: {
+    flex: 1,
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
