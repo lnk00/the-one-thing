@@ -8,7 +8,7 @@ import Animated, {
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-export default function PageIntro({
+export default function PagerIntro({
   index,
   scrollY,
 }: { index: number; scrollY: SharedValue<number> }) {

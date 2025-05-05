@@ -17,7 +17,7 @@ export default function RootLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen
-            name="learn-more"
+            name="(onboarding)/learn-more"
             options={{
               presentation: 'modal',
               animation: 'slide_from_bottom',

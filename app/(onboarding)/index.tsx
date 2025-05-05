@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import Pager from '../Pager';
+import Pager from '../../components/pager/pager';
 
 export default function Index() {
   return (

@@ -4,7 +4,7 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
-export default function PagerIndicator({
+export default function PagerIndicators({
   scrollX,
   totalIndex,
 }: {

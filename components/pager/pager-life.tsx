@@ -19,7 +19,7 @@ import { useRouter } from 'expo-router';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-export default function PageLife({
+export default function PagerLife({
   index,
   scrollY,
 }: { index: number; scrollY: SharedValue<number> }) {

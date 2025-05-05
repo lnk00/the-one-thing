@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -6,7 +6,6 @@ import Animated, {
   withSpring,
   withSequence,
   Easing,
-  useAnimatedReaction,
 } from 'react-native-reanimated';
 import { Pressable } from 'react-native';
 import { useRef, useEffect } from 'react';

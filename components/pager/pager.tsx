@@ -8,12 +8,11 @@ import Animated, {
   KeyboardState,
 } from 'react-native-reanimated';
 import { useRef, useState } from 'react';
-import PagerIndicator from './PagerIndicator';
-import PagerButton from './PagerButton';
-import PageIntro from './PageIntro';
-import PageLife from './PageLife';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { BlurView } from 'expo-blur';
+import PagerIntro from './pager-intro';
+import PagerLife from './pager-life';
+import PagerIndicators from './pager-indicators';
+import PagerButton from './pager-button';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -109,10 +108,10 @@ export default function Pager() {
         data={PAGES}
         renderItem={({ item, index }) => {
           if (item === 'PAGE_INTRO') {
-            return <PageIntro index={index} scrollY={scrollY} />;
+            return <PagerIntro index={index} scrollY={scrollY} />;
           }
 
-          return <PageLife index={index} scrollY={scrollY} />;
+          return <PagerLife index={index} scrollY={scrollY} />;
         }}
         keyExtractor={(_, index) => index.toString()}
         pagingEnabled
@@ -125,7 +124,7 @@ export default function Pager() {
         style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
       >
         <BlurView intensity={10} style={styles.blurView}>
-          <PagerIndicator scrollX={scrollY} totalIndex={PAGES.length} />
+          <PagerIndicators scrollX={scrollY} totalIndex={PAGES.length} />
           <View style={styles.buttonsContainer}>
             <PagerButton
               type="back"
