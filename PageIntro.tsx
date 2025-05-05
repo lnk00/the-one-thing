@@ -60,15 +60,14 @@ const styles = StyleSheet.create({
     height: SCREEN_HEIGHT,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     gap: 24,
   },
   pageText: {
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: '600',
   },
   boldText: {
-    fontSize: 32,
     fontWeight: '900',
   },
 });

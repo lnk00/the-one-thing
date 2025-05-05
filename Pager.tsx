@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Keyboard } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -70,6 +70,8 @@ export default function Pager() {
         animated: true,
       });
 
+      Keyboard.dismiss();
+
       setCurrentIndex(nextIndex);
     }
   };
@@ -81,6 +83,8 @@ export default function Pager() {
         index: prevIndex,
         animated: true,
       });
+
+      Keyboard.dismiss();
 
       setCurrentIndex(prevIndex);
     }
@@ -103,7 +107,7 @@ export default function Pager() {
         showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        scrollEnabled={true}
+        scrollEnabled={false}
       />
       <Animated.View
         style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
