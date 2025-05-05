@@ -46,14 +46,13 @@ export default function PageLife({
       style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}
     >
       <Animated.Text style={[styles.pageTitle, animatedTextStyle]}>
-        Write Your Life's Focus
+        Your Life Goals
       </Animated.Text>
 
       <View style={styles.chatContainer}>
         <View style={styles.messageContainer}>
           <Text style={styles.messageText}>
-            What is the one thing in your life that would make everything else
-            easier or unnecessary?
+            Write down one life goal for each domains you want to perform in.
           </Text>
         </View>
       </View>
@@ -63,11 +62,15 @@ export default function PageLife({
           style={styles.textInput}
           value={inputValue}
           onChangeText={setInputValue}
-          placeholder="Type your life focus here..."
+          placeholder="Type your life goals here..."
           placeholderTextColor="#A0A0A0"
           multiline
         />
       </View>
+      <Text style={styles.hintText}>
+        Write it the way you want, our AI make sure to categorize each of your
+        goals.
+      </Text>
       <View style={{ flex: 1 }} />
     </KeyboardAvoidingView>
   );
@@ -97,6 +100,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333333',
     lineHeight: 24,
+  },
+  hintText: {
+    fontSize: 14,
+    color: '#A0A0A0',
+    lineHeight: 20,
+    paddingHorizontal: 16,
+    paddingTop: 8,
   },
   inputContainer: {
     flexDirection: 'row',
