@@ -2,6 +2,7 @@
   "expo": {
     "name": "the-one-thing",
     "slug": "the-one-thing",
+    "scheme": "the-one-thing",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,7 +26,9 @@
       "package": "com.anonymous.theonething"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": ["expo-router"]
   }
 }

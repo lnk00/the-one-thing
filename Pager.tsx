@@ -63,31 +63,42 @@ export default function Pager() {
   });
 
   const handleNextPress = () => {
-    if (currentIndex < PAGES.length - 1) {
-      const nextIndex = currentIndex + 1;
-      flatListRef.current?.scrollToIndex({
-        index: nextIndex,
-        animated: true,
-      });
+    const isKeyboardOpen = Keyboard.isVisible();
+    Keyboard.dismiss();
+    setTimeout(
+      () => {
+        if (currentIndex < PAGES.length - 1) {
+          const nextIndex = currentIndex + 1;
+          flatListRef.current?.scrollToIndex({
+            index: nextIndex,
+            animated: true,
+          });
 
-      Keyboard.dismiss();
-
-      setCurrentIndex(nextIndex);
-    }
+          setCurrentIndex(nextIndex);
+        }
+      },
+      isKeyboardOpen ? 300 : 0,
+    );
   };
 
   const handleBackPress = () => {
-    if (currentIndex > 0) {
-      const prevIndex = currentIndex - 1;
-      flatListRef.current?.scrollToIndex({
-        index: prevIndex,
-        animated: true,
-      });
+    const isKeyboardOpen = Keyboard.isVisible();
+    Keyboard.dismiss();
 
-      Keyboard.dismiss();
+    setTimeout(
+      () => {
+        if (currentIndex > 0) {
+          const prevIndex = currentIndex - 1;
+          flatListRef.current?.scrollToIndex({
+            index: prevIndex,
+            animated: true,
+          });
 
-      setCurrentIndex(prevIndex);
-    }
+          setCurrentIndex(prevIndex);
+        }
+      },
+      isKeyboardOpen ? 300 : 0,
+    );
   };
 
   return (
