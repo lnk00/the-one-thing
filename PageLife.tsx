@@ -55,13 +55,14 @@ export default function PageLife({
       <Animated.View style={[styles.chatContainer, animatedTextStyle]}>
         <View style={styles.messageContainer}>
           <Text style={styles.messageText}>
-            Write down one life goal for each domains you want to perform in.
+            Write down one life goal per domain you want to perform in. No need
+            to fill every domains.
           </Text>
           <TouchableOpacity
             style={styles.learnMoreContainer}
             onPress={() => router.push('/learn-more')}
           >
-            <Text style={styles.learnMoreText}>Learn more</Text>
+            <Text style={styles.learnMoreText}>More about domains</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
