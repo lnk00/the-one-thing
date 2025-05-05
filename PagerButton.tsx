@@ -5,9 +5,11 @@ import Animated, {
   withTiming,
   withSpring,
   withSequence,
+  Easing,
+  useAnimatedReaction,
 } from 'react-native-reanimated';
 import { Pressable } from 'react-native';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -23,13 +25,46 @@ export default function PagerButton({
   disabled?: boolean;
 }) {
   const scale = useSharedValue(1);
+  const opacity = useSharedValue(type === 'back' ? (disabled ? 0 : 1) : 1);
+  const translateX = useSharedValue(type === 'back' ? (disabled ? -20 : 0) : 0);
   const pressStartTime = useRef<number>(0);
   const MIN_PRESS_DURATION = 150;
+  const ANIMATION_DURATION = 300;
+
+  useEffect(() => {
+    if (type === 'back') {
+      if (disabled) {
+        translateX.value = withTiming(-20, {
+          duration: ANIMATION_DURATION,
+          easing: Easing.out(Easing.cubic),
+        });
+        opacity.value = withTiming(0, {
+          duration: ANIMATION_DURATION,
+          easing: Easing.out(Easing.cubic),
+        });
+      } else {
+        opacity.value = withTiming(1, {
+          duration: ANIMATION_DURATION,
+          easing: Easing.out(Easing.cubic),
+        });
+        translateX.value = withTiming(0, {
+          duration: ANIMATION_DURATION,
+          easing: Easing.out(Easing.cubic),
+        });
+      }
+    }
+  }, [disabled, type, opacity, translateX]);
 
   const animatedButtonStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ scale: scale.value }],
-      opacity: disabled ? 0.5 : 1,
+      transform: [
+        { scale: scale.value },
+        { translateX: type === 'back' ? translateX.value : 0 },
+      ],
+      opacity: type === 'back' ? opacity.value : disabled ? 0.5 : 1,
+      ...(type === 'back' && {
+        pointerEvents: opacity.value === 0 ? 'none' : 'auto',
+      }),
     };
   });
 
