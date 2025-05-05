@@ -6,6 +6,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
@@ -54,6 +56,17 @@ export default function PageLife({
           <Text style={styles.messageText}>
             Write down one life goal for each domains you want to perform in.
           </Text>
+          <TouchableOpacity
+            style={styles.learnMoreContainer}
+            onPress={() =>
+              Alert.alert(
+                'Learn More',
+                'Setting specific goals for different life domains helps you create a balanced and fulfilling life. Consider domains like career, health, relationships, personal growth, and finances.',
+              )
+            }
+          >
+            <Text style={styles.learnMoreText}>Learn more</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -100,6 +113,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333333',
     lineHeight: 24,
+    marginBottom: 12,
+  },
+  learnMoreContainer: {
+    alignSelf: 'flex-start',
+    marginTop: 4,
+  },
+  learnMoreText: {
+    fontSize: 14,
+    color: '#000',
+    textDecorationLine: 'underline',
   },
   hintText: {
     fontSize: 14,
