@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
@@ -16,6 +15,7 @@ import Animated, {
   type SharedValue,
 } from 'react-native-reanimated';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -24,6 +24,7 @@ export default function PageLife({
   scrollY,
 }: { index: number; scrollY: SharedValue<number> }) {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
 
   const inputRange = [
@@ -58,12 +59,7 @@ export default function PageLife({
           </Text>
           <TouchableOpacity
             style={styles.learnMoreContainer}
-            onPress={() =>
-              Alert.alert(
-                'Learn More',
-                'Setting specific goals for different life domains helps you create a balanced and fulfilling life. Consider domains like career, health, relationships, personal growth, and finances.',
-              )
-            }
+            onPress={() => router.push('/learn-more')}
           >
             <Text style={styles.learnMoreText}>Learn more</Text>
           </TouchableOpacity>
