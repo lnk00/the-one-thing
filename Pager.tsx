@@ -147,14 +147,14 @@ const styles = StyleSheet.create({
   },
   bottomControlsContainer: {
     position: 'absolute',
-    bottom: 64,
+    bottom: 0,
     left: 0,
     right: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 24,
-    height: 50,
+    paddingBottom: 64,
   },
   buttonsContainer: {
     flexDirection: 'row',
