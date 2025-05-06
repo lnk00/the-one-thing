@@ -16,6 +16,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
+import { Colors } from '../../constants/colors';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -73,7 +74,7 @@ export default function PagerLife({
           value={inputValue}
           onChangeText={setInputValue}
           placeholder="Type your life goals here..."
-          placeholderTextColor="#A0A0A0"
+          placeholderTextColor={Colors.muted.text}
           multiline
         />
       </Animated.View>
@@ -95,20 +96,23 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 32,
     fontWeight: '900',
+    color: Colors.text,
   },
   chatContainer: {
     width: '100%',
     paddingVertical: 16,
   },
   messageContainer: {
-    backgroundColor: '#F7F7F8',
+    backgroundColor: Colors.muted.background,
     padding: 16,
     borderRadius: 12,
     maxWidth: '100%',
+    borderWidth: 1,
+    borderColor: Colors.muted.border,
   },
   messageText: {
     fontSize: 16,
-    color: '#333333',
+    color: Colors.text,
     lineHeight: 24,
     marginBottom: 12,
   },
@@ -118,12 +122,12 @@ const styles = StyleSheet.create({
   },
   learnMoreText: {
     fontSize: 14,
-    color: '#000',
+    color: Colors.text,
     textDecorationLine: 'underline',
   },
   hintText: {
     fontSize: 14,
-    color: '#A0A0A0',
+    color: Colors.muted.text,
     lineHeight: 20,
     paddingHorizontal: 16,
     paddingTop: 8,
@@ -132,21 +136,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 100,
-    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#f0f0f0',
+    borderColor: Colors.muted.border,
     borderRadius: 12,
     padding: 8,
   },
   textInput: {
     flex: 1,
     fontSize: 16,
-    color: '#333333',
+    color: Colors.text,
     padding: 8,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#f0f0f0',
-    backgroundColor: '#FAFAFA',
+    borderColor: Colors.border,
+    backgroundColor: Colors.muted.background,
   },
   boldText: {
     fontSize: 32,

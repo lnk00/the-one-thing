@@ -5,6 +5,7 @@ import Animated, {
   interpolate,
   type SharedValue,
 } from 'react-native-reanimated';
+import { Colors } from '../../constants/colors';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
   pageText: {
     fontSize: 34,
     fontWeight: '600',
+    color: Colors.text,
   },
   boldText: {
     fontWeight: '900',

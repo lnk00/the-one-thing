@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import Pager from '../../components/pager/pager';
+import { Colors } from '../../constants/colors';
 
 export default function Index() {
   return (
@@ -12,6 +13,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
   },
 });

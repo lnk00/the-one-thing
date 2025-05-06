@@ -3,6 +3,7 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import { Colors } from '../../constants/colors';
 
 export default function PagerIndicators({
   scrollX,
@@ -21,7 +22,7 @@ export default function PagerIndicators({
           const distance = Math.abs(scrollX.value - pagePosition);
           const progress = Math.max(0, 1 - distance / SCREEN_HEIGHT);
           const width = 10 + progress * 20;
-          const opacity = 0.2 + progress * 0.5;
+          const opacity = 0.2 + progress * 1;
 
           return {
             width,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 10,
     borderRadius: 4,
-    backgroundColor: '#000',
+    backgroundColor: Colors.accent,
     marginHorizontal: 4,
   },
 });

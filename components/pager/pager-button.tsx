@@ -11,6 +11,7 @@ import { Pressable } from 'react-native';
 import { useRef, useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 import { AntDesign } from '@expo/vector-icons';
+import { Colors } from '../../constants/colors';
 
 export type ButtonType = 'next' | 'back';
 
@@ -121,7 +122,7 @@ export default function PagerButton({
         {type === 'next' ? (
           <Text style={styles.buttonText}>Next</Text>
         ) : (
-          <AntDesign name="arrowleft" size={20} color="white" />
+          <AntDesign name="arrowleft" size={20} color={Colors.background} />
         )}
       </Animated.View>
     </Pressable>
@@ -130,7 +131,7 @@ export default function PagerButton({
 
 const styles = StyleSheet.create({
   buttonNext: {
-    backgroundColor: '#000',
+    backgroundColor: Colors.accent,
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 30,
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonBack: {
-    backgroundColor: '#000',
+    backgroundColor: Colors.accent,
     width: 44,
     height: 44,
     borderRadius: 22,
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: Colors.background,
     fontSize: 16,
     fontWeight: 'bold',
   },

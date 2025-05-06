@@ -4,41 +4,55 @@ import {
   Ionicons,
   FontAwesome5,
 } from '@expo/vector-icons';
+import { Colors } from '../../constants/colors';
+
 const domains = [
   {
     name: 'Career',
-    icon: <MaterialCommunityIcons name="briefcase" size={20} color="#000000" />,
+    icon: (
+      <MaterialCommunityIcons
+        name="briefcase"
+        size={20}
+        color={Colors.accent}
+      />
+    ),
     description:
       'Professional achievements, skills development, and work-life balance.',
   },
   {
     name: 'Health',
-    icon: <Ionicons name="fitness" size={20} color="#000000" />,
+    icon: <Ionicons name="fitness" size={20} color={Colors.accent} />,
     description:
       'Physical fitness, nutrition, mental wellbeing, and preventive care.',
   },
   {
     name: 'Relationships',
-    icon: <Ionicons name="people" size={20} color="#000000" />,
+    icon: <Ionicons name="people" size={20} color={Colors.accent} />,
     description:
       'Family bonds, friendships, romantic relationships, and social connections.',
   },
   {
     name: 'Personal Growth',
-    icon: <Ionicons name="person" size={20} color="#000000" />,
+    icon: <Ionicons name="person" size={20} color={Colors.accent} />,
     description:
       'Learning new skills, self-improvement, hobbies, and expanding comfort zones.',
   },
   {
     name: 'Finances',
-    icon: <FontAwesome5 name="money-bill-wave" size={16} color="#000000" />,
+    icon: (
+      <FontAwesome5 name="money-bill-wave" size={16} color={Colors.accent} />
+    ),
     description:
       'Saving, investing, debt management, and financial independence.',
   },
   {
     name: 'Spirituality',
     icon: (
-      <MaterialCommunityIcons name="meditation" size={20} color="#000000" />
+      <MaterialCommunityIcons
+        name="meditation"
+        size={20}
+        color={Colors.accent}
+      />
     ),
     description:
       'Inner peace, purpose, faith practices, and connection to something greater.',
@@ -76,7 +90,7 @@ export default function LearnMoreModal() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.background,
     paddingHorizontal: 16,
     paddingTop: 16,
   },
@@ -84,12 +98,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '900',
     marginBottom: 16,
-    color: '#333333',
+    color: Colors.text,
   },
   modalText: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#333333',
+    color: Colors.text,
     marginBottom: 24,
   },
   domainsContainer: {
@@ -97,7 +111,9 @@ const styles = StyleSheet.create({
   },
   domainCard: {
     flexDirection: 'row',
-    backgroundColor: '#F8F8F8',
+    backgroundColor: Colors.muted.background,
+    borderWidth: 1,
+    borderColor: Colors.muted.border,
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
@@ -106,7 +122,9 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.background,
+    borderWidth: 1,
+    borderColor: Colors.muted.border,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 16,
@@ -117,12 +135,12 @@ const styles = StyleSheet.create({
   domainTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#333333',
+    color: Colors.text,
     marginBottom: 4,
   },
   domainDescription: {
     fontSize: 14,
     lineHeight: 20,
-    color: '#666666',
+    color: Colors.muted.text,
   },
 });
