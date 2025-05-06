@@ -1,21 +1,21 @@
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import {
-  StyleSheet,
-  View,
   Dimensions,
-  Text,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
+  StyleSheet,
+  Text,
+  TextInput,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useAnimatedStyle,
   interpolate,
   type SharedValue,
 } from 'react-native-reanimated';
-import { useState } from 'react';
-import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors } from '../../constants/colors';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
