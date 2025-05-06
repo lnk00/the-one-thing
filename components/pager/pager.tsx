@@ -13,6 +13,8 @@ import PagerIntro from './pager-intro';
 import PagerLife from './pager-life';
 import PagerIndicators from './pager-indicators';
 import PagerControlls from './pager-controlls';
+import { useAtomValue } from 'jotai';
+import { onboardingLifeInputAtom } from '../../state/onboarding-state';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -39,6 +41,7 @@ export default function Pager() {
   const flatListRef = useRef<Animated.FlatList<string>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const keyboard = useAnimatedKeyboard();
+  const lifeInputValue = useAtomValue(onboardingLifeInputAtom);
 
   const animatedKeyboardStyles = useAnimatedStyle(() => ({
     transform: [
@@ -101,6 +104,18 @@ export default function Pager() {
     );
   };
 
+  const handleDisabledNextButton = () => {
+    if (currentIndex === PAGES.length - 1) {
+      return true;
+    }
+
+    if (PAGES[currentIndex] === 'PAGE_LIFE' && lifeInputValue.length === 0) {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <View style={[styles.container]}>
       <Animated.FlatList
@@ -130,7 +145,7 @@ export default function Pager() {
               onBackPress={handleBackPress}
               onNextPress={handleNextPress}
               backDisabled={currentIndex === 0}
-              nextDisabled={currentIndex === PAGES.length - 1}
+              nextDisabled={handleDisabledNextButton()}
             />
           </View>
         </BlurView>

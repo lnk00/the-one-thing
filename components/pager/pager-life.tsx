@@ -1,5 +1,4 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
 import {
   Dimensions,
   KeyboardAvoidingView,
@@ -17,6 +16,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors } from '../../constants/colors';
+import { useAtom } from 'jotai';
+import { onboardingLifeInputAtom } from '../../state/onboarding-state';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -26,7 +27,7 @@ export default function PagerLife({
 }: { index: number; scrollY: SharedValue<number> }) {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useAtom(onboardingLifeInputAtom);
 
   const inputRange = [
     (index - 1) * SCREEN_HEIGHT,

@@ -70,7 +70,7 @@ export default function PagerControlls({
         />
       </Animated.View>
 
-      <Button onPress={onNextPress} disabled={nextDisabled}>
+      <Button onPress={onNextPress} disabled={nextDisabled} visuallyDisabled>
         Next
       </Button>
     </View>

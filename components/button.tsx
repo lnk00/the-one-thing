@@ -18,6 +18,7 @@ export default function Button({
   children,
   icon,
   disabled = false,
+  visuallyDisabled = false,
   fullWidth = false,
   rounded = false,
 }: {
@@ -25,6 +26,7 @@ export default function Button({
   children?: ReactNode;
   icon?: ReactNode;
   disabled?: boolean;
+  visuallyDisabled?: boolean;
   fullWidth?: boolean;
   rounded?: boolean;
 }) {
@@ -89,6 +91,7 @@ export default function Button({
             styles.container,
             animatedButtonStyle,
             rounded && styles.rounded,
+            disabled && visuallyDisabled && styles.disabled,
           ]}
         >
           <View style={styles.content}>
@@ -112,6 +115,9 @@ const styles = StyleSheet.create({
   },
   rounded: {
     paddingHorizontal: 12,
+  },
+  disabled: {
+    opacity: 0.1,
   },
   content: {
     flexDirection: 'row',
