@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, Button } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useAnimatedStyle,
@@ -35,21 +35,6 @@ export default function PagerIntro({
   return (
     <View style={[styles.pageContainer, { paddingTop: insets.top + 24 }]}>
       <View style={{ flex: 1 }} />
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        This app is designed to help you{' '}
-        <Text style={styles.boldText}>focus </Text>
-        on what truly matters.
-      </Animated.Text>
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        Inspired by the principles of{' '}
-        <Text style={styles.boldText}>The One Thing.</Text>
-      </Animated.Text>
-      <Animated.Text style={[styles.pageText, animatedTextStyle]}>
-        We’ll guide you to identify your{' '}
-        <Text style={styles.boldText}>long-term </Text>
-        vision and turn it into practical daily{' '}
-        <Text style={styles.boldText}>actions.</Text>
-      </Animated.Text>
       <View style={{ flex: 2 }} />
     </View>
   );
