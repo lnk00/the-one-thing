@@ -12,7 +12,7 @@ import { BlurView } from 'expo-blur';
 import PagerIntro from './pager-intro';
 import PagerLife from './pager-life';
 import PagerIndicators from './pager-indicators';
-import PagerButton from './pager-button';
+import PagerControlls from './pager-controlls';
 
 type PageType =
   | 'PAGE_INTRO'
@@ -126,15 +126,11 @@ export default function Pager() {
         <BlurView intensity={10} style={styles.blurView}>
           <PagerIndicators scrollX={scrollY} totalIndex={PAGES.length} />
           <View style={styles.buttonsContainer}>
-            <PagerButton
-              type="back"
-              onPress={handleBackPress}
-              disabled={currentIndex === 0}
-            />
-            <PagerButton
-              type="next"
-              onPress={handleNextPress}
-              disabled={currentIndex === PAGES.length - 1}
+            <PagerControlls
+              onBackPress={handleBackPress}
+              onNextPress={handleNextPress}
+              backDisabled={currentIndex === 0}
+              nextDisabled={currentIndex === PAGES.length - 1}
             />
           </View>
         </BlurView>
