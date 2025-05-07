@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -61,6 +61,14 @@ export default function Pager() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
         scrollEnabled={false}
+        getItemLayout={(_, index) => ({
+          length: Dimensions.get('window').height,
+          offset: Dimensions.get('window').height * index,
+          index,
+        })}
+        onScrollToIndexFailed={(info) => {
+          console.warn('Failed to scroll to index', info);
+        }}
       />
       <Animated.View
         style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
