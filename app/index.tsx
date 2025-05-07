@@ -1,13 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { Colors } from '../constants/colors';
 import Button from '../components/button';
-import { useRouter } from 'expo-router';
 import { useAtom } from 'jotai';
 import { sessionAtom } from '../state/auth-state';
 
 export default function Signin() {
   const [_, setSession] = useAtom(sessionAtom);
-  const router = useRouter();
 
   const handleSignin = () => {
     setSession({
@@ -23,7 +21,6 @@ export default function Signin() {
       expires_in: 0,
       token_type: '',
     });
-    router.navigate('protected');
   };
 
   return (
