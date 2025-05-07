@@ -1,47 +1,29 @@
-import { StyleSheet, View, Dimensions, Keyboard } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
-  runOnJS,
   useAnimatedKeyboard,
   useAnimatedStyle,
   KeyboardState,
 } from 'react-native-reanimated';
-import { useRef, useState } from 'react';
 import { BlurView } from 'expo-blur';
 import PagerIntro from './pager-intro';
 import PagerLife from './pager-life';
 import PagerIndicators from './pager-indicators';
 import PagerControlls from './pager-controlls';
-import { useAtomValue } from 'jotai';
-import { onboardingLifeInputAtom } from '../../state/onboarding-state';
-
-type PageType =
-  | 'PAGE_INTRO'
-  | 'PAGE_LIFE'
-  | 'PAGE_YEARS'
-  | 'PAGE_YEAR'
-  | 'PAGE_MONTH'
-  | 'PAGE_WEEK'
-  | 'PAGE_DAY';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
-const PAGES: Array<PageType> = [
-  'PAGE_INTRO',
-  'PAGE_LIFE',
-  'PAGE_YEARS',
-  'PAGE_YEAR',
-  'PAGE_MONTH',
-  'PAGE_WEEK',
-  'PAGE_DAY',
-];
+import { PAGES } from '../../state/pager-state';
+import { usePagerNavigation } from '../../hooks/use-pager-navigation';
 
 export default function Pager() {
   const scrollY = useSharedValue(0);
-  const flatListRef = useRef<Animated.FlatList<string>>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const keyboard = useAnimatedKeyboard();
-  const lifeInputValue = useAtomValue(onboardingLifeInputAtom);
+  const {
+    flatListRef,
+    handleNextPress,
+    handleBackPress,
+    isNextButtonDisabled,
+    isBackButtonDisabled,
+  } = usePagerNavigation();
 
   const animatedKeyboardStyles = useAnimatedStyle(() => ({
     transform: [
@@ -59,62 +41,7 @@ export default function Pager() {
     onScroll: (event) => {
       scrollY.value = event.contentOffset.y;
     },
-    onMomentumEnd: (event) => {
-      const newIndex = Math.round(event.contentOffset.y / SCREEN_HEIGHT);
-      runOnJS(setCurrentIndex)(newIndex);
-    },
   });
-
-  const handleNextPress = () => {
-    const isKeyboardOpen = Keyboard.isVisible();
-    Keyboard.dismiss();
-    setTimeout(
-      () => {
-        if (currentIndex < PAGES.length - 1) {
-          const nextIndex = currentIndex + 1;
-          flatListRef.current?.scrollToIndex({
-            index: nextIndex,
-            animated: true,
-          });
-
-          setCurrentIndex(nextIndex);
-        }
-      },
-      isKeyboardOpen ? 300 : 0,
-    );
-  };
-
-  const handleBackPress = () => {
-    const isKeyboardOpen = Keyboard.isVisible();
-    Keyboard.dismiss();
-
-    setTimeout(
-      () => {
-        if (currentIndex > 0) {
-          const prevIndex = currentIndex - 1;
-          flatListRef.current?.scrollToIndex({
-            index: prevIndex,
-            animated: true,
-          });
-
-          setCurrentIndex(prevIndex);
-        }
-      },
-      isKeyboardOpen ? 300 : 0,
-    );
-  };
-
-  const handleDisabledNextButton = () => {
-    if (currentIndex === PAGES.length - 1) {
-      return true;
-    }
-
-    if (PAGES[currentIndex] === 'PAGE_LIFE' && lifeInputValue.length === 0) {
-      return true;
-    }
-
-    return false;
-  };
 
   return (
     <View style={[styles.container]}>
@@ -144,8 +71,8 @@ export default function Pager() {
             <PagerControlls
               onBackPress={handleBackPress}
               onNextPress={handleNextPress}
-              backDisabled={currentIndex === 0}
-              nextDisabled={handleDisabledNextButton()}
+              backDisabled={isBackButtonDisabled()}
+              nextDisabled={isNextButtonDisabled()}
             />
           </View>
         </BlurView>
