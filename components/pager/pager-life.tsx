@@ -62,7 +62,7 @@ export default function PagerLife({
           </Text>
           <TouchableOpacity
             style={styles.learnMoreContainer}
-            onPress={() => router.push('/learn-more')}
+            onPress={() => router.push('protected/learn-more')}
           >
             <Text style={styles.learnMoreText}>More about domains</Text>
           </TouchableOpacity>

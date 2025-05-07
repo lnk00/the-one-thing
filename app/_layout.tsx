@@ -11,7 +11,7 @@ import { sessionAtom } from '../state/auth-state';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [_, setSession] = useAtom(sessionAtom);
+  const [session, setSession] = useAtom(sessionAtom);
   useEffect(() => {
     SplashScreen.hideAsync();
   });
@@ -30,14 +30,15 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="(onboarding)/learn-more"
-            options={{
-              presentation: 'modal',
-              animation: 'slide_from_bottom',
-            }}
-          />
+        <Stack
+          screenOptions={{ headerShown: false, animation: 'slide_from_bottom' }}
+        >
+          <Stack.Protected guard={session === null}>
+            <Stack.Screen name="index" />
+          </Stack.Protected>
+          <Stack.Protected guard={session !== null}>
+            <Stack.Screen name="protected" />
+          </Stack.Protected>
         </Stack>
         <StatusBar style="auto" />
       </GestureHandlerRootView>
