@@ -12,11 +12,13 @@ import * as Haptics from 'expo-haptics';
 import { Colors } from '../constants/colors';
 
 export type ButtonType = 'next' | 'back';
+export type ButtonIconSide = 'left' | 'right';
 
 export default function Button({
   onPress,
   children,
   icon,
+  iconSide = 'left',
   disabled = false,
   visuallyDisabled = false,
   fullWidth = false,
@@ -25,6 +27,7 @@ export default function Button({
   onPress: () => void;
   children?: ReactNode;
   icon?: ReactNode;
+  iconSide?: ButtonIconSide;
   disabled?: boolean;
   visuallyDisabled?: boolean;
   fullWidth?: boolean;
@@ -95,8 +98,9 @@ export default function Button({
           ]}
         >
           <View style={styles.content}>
+            {icon && iconSide === 'left' && icon}
             {children && <Text style={styles.buttonText}>{children}</Text>}
-            {icon && icon}
+            {icon && iconSide === 'right' && icon}
           </View>
         </Animated.View>
       </Pressable>
