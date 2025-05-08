@@ -61,14 +61,16 @@ export default function Signin() {
         />
       </View>
 
-      <Button
-        onPress={handleSignin}
-        icon={<AntDesign name="apple1" size={20} color={Colors.background} />}
-        fullWidth
-        size="big"
-      >
-        Sign in with Apple
-      </Button>
+      <View style={styles.footer}>
+        <Button
+          onPress={handleSignin}
+          icon={<AntDesign name="apple1" size={20} color={Colors.background} />}
+          fullWidth
+          size="big"
+        >
+          Sign in with Apple
+        </Button>
+      </View>
     </SafeAreaView>
   );
 }
@@ -80,8 +82,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   header: {
-    marginTop: 40,
     alignItems: 'center',
+    height: 100,
   },
   title: {
     fontSize: 32,
@@ -101,7 +103,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 140,
-    height: 140,
+    width: 200,
+    height: 200,
+  },
+  footer: {
+    height: 100,
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 });

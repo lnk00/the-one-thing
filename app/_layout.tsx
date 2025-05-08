@@ -42,7 +42,9 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Stack screenOptions={{ headerShown: false, animation: 'none' }}>
+        <Stack
+          screenOptions={{ headerShown: false, animation: 'fade_from_bottom' }}
+        >
           <Stack.Protected guard={session === null}>
             <Stack.Screen name="index" />
           </Stack.Protected>
@@ -50,7 +52,7 @@ export default function RootLayout() {
             <Stack.Screen name="protected" />
           </Stack.Protected>
         </Stack>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );

@@ -30,6 +30,21 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-router", "expo-apple-authentication"]
+    "plugins": [
+      "expo-router",
+      "expo-apple-authentication",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/splash-icon.png",
+          "dark": {
+            "image": "./assets/splash-icon.png",
+            "backgroundColor": "#ffffff"
+          },
+          "imageWidth": 200
+        }
+      ]
+    ]
   }
 }

@@ -73,7 +73,7 @@ export default function Pager() {
       <Animated.View
         style={[styles.bottomControlsContainer, animatedKeyboardStyles]}
       >
-        <BlurView intensity={10} style={styles.blurView}>
+        <BlurView intensity={10} tint="extraLight" style={styles.blurView}>
           <PagerIndicators scrollX={scrollY} totalIndex={PAGES.length} />
           <View style={styles.buttonsContainer}>
             <PagerControlls
