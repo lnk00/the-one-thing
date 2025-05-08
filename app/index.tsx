@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { Colors } from '../constants/colors';
 import Button from '../components/button';
 import { useAtom } from 'jotai';
@@ -6,6 +6,7 @@ import { sessionAtom } from '../state/auth-state';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import { supabase } from '../services/supabase';
 import { AntDesign } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Signin() {
   const [_, setSession] = useAtom(sessionAtom);
@@ -46,14 +47,29 @@ export default function Signin() {
   };
 
   return (
-    <View style={[styles.container]}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>The One Thing</Text>
+        <Text style={styles.subtitle}>Focus on what matters most</Text>
+      </View>
+
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../assets/icon.png')}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
+
       <Button
         onPress={handleSignin}
         icon={<AntDesign name="apple1" size={20} color={Colors.background} />}
+        fullWidth
+        size="big"
       >
         Sign in with Apple
       </Button>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -61,8 +77,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    display: 'flex',
+    padding: 16,
+  },
+  header: {
+    marginTop: 40,
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '900',
+    color: Colors.text,
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: Colors.muted.text,
+    textAlign: 'center',
+  },
+  imageContainer: {
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 140,
+    height: 140,
   },
 });

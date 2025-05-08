@@ -13,6 +13,7 @@ import { Colors } from '../constants/colors';
 
 export type ButtonType = 'next' | 'back';
 export type ButtonIconSide = 'left' | 'right';
+export type ButtonSize = 'normal' | 'big';
 
 export default function Button({
   onPress,
@@ -23,6 +24,7 @@ export default function Button({
   visuallyDisabled = false,
   fullWidth = false,
   rounded = false,
+  size = 'normal',
 }: {
   onPress: () => void;
   children?: ReactNode;
@@ -32,6 +34,7 @@ export default function Button({
   visuallyDisabled?: boolean;
   fullWidth?: boolean;
   rounded?: boolean;
+  size?: ButtonSize;
 }) {
   const scale = useSharedValue(1);
   const pressStartTime = useRef<number>(0);
@@ -95,6 +98,7 @@ export default function Button({
             animatedButtonStyle,
             rounded && styles.rounded,
             disabled && visuallyDisabled && styles.disabled,
+            size === 'big' && styles.big,
           ]}
         >
           <View style={styles.content}>
@@ -119,6 +123,10 @@ const styles = StyleSheet.create({
   },
   rounded: {
     paddingHorizontal: 12,
+  },
+  big: {
+    paddingVertical: 18,
+    paddingHorizontal: 36,
   },
   disabled: {
     opacity: 0.1,
