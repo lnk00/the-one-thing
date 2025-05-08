@@ -10,6 +10,10 @@ import { sessionAtom } from '../state/auth-state';
 
 SplashScreen.preventAutoHideAsync();
 
+SplashScreen.setOptions({
+  fade: true,
+});
+
 export default function RootLayout() {
   const [session, setSession] = useAtom(sessionAtom);
   const [authLoaded, setAuthLoaded] = useState(false);
