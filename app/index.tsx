@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Colors } from '../constants/colors';
 import Button from '../components/button';
 import { useAtom } from 'jotai';
@@ -7,6 +7,8 @@ import * as AppleAuthentication from 'expo-apple-authentication';
 import { supabase } from '../services/supabase';
 import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image } from 'expo-image';
+import icon from '../assets/icon.png';
 
 export default function Signin() {
   const [_, setSession] = useAtom(sessionAtom);
@@ -55,9 +57,10 @@ export default function Signin() {
 
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/icon.png')}
+          source={icon}
           style={styles.image}
-          resizeMode="contain"
+          contentFit="contain"
+          priority="high"
         />
       </View>
 
@@ -86,10 +89,10 @@ const styles = StyleSheet.create({
     height: 100,
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: '900',
     color: Colors.text,
-    marginBottom: 8,
+    marginBottom: 12,
   },
   subtitle: {
     fontSize: 18,
