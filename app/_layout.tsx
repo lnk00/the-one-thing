@@ -12,12 +12,12 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [session, setSession] = useAtom(sessionAtom);
-  const [loaded, setLoaded] = useState(false);
+  const [authLoaded, setAuthLoaded] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      setLoaded(true);
+      setAuthLoaded(true);
     });
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
@@ -30,12 +30,12 @@ export default function RootLayout() {
   }, [setSession]);
 
   useEffect(() => {
-    if (loaded) {
+    if (authLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [authLoaded]);
 
-  if (!loaded) {
+  if (!authLoaded) {
     return null;
   }
 

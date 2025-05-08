@@ -8,7 +8,6 @@ import { supabase } from '../services/supabase';
 import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
-import icon from '../assets/icon.png';
 
 export default function Signin() {
   const [_, setSession] = useAtom(sessionAtom);
@@ -57,7 +56,7 @@ export default function Signin() {
 
       <View style={styles.imageContainer}>
         <Image
-          source={icon}
+          source={require('../assets/icon.png')}
           style={styles.image}
           contentFit="contain"
           priority="high"
