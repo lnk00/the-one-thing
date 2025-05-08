@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { supabase } from '../services/supabase';
@@ -12,20 +12,28 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [session, setSession] = useAtom(sessionAtom);
-  useEffect(() => {
-    SplashScreen.hideAsync();
-  });
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      console.info('Session: ', session);
+      setLoaded(true);
     });
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      console.info('Session: ', session);
+      console.info(`User: ${session?.user.email} authenticated`);
     });
   }, [setSession]);
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <SafeAreaProvider>
