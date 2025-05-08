@@ -12,7 +12,17 @@ import PagerIntro from './pager-intro.component';
 import PagerLife from './pager-life.component';
 import PagerIndicators from './pager-indicators.component';
 import PagerControlls from './pager-controlls.component';
-import { PAGES } from '../../../../state/pager-state';
+import type { PageType } from '../../../../state/pager/types';
+
+const PAGES: Array<PageType> = [
+  'PAGE_INTRO',
+  'PAGE_LIFE',
+  'PAGE_YEARS',
+  'PAGE_YEAR',
+  'PAGE_MONTH',
+  'PAGE_WEEK',
+  'PAGE_DAY',
+];
 
 export default function Pager() {
   const scrollY = useSharedValue(0);
@@ -23,7 +33,7 @@ export default function Pager() {
     handleBackPress,
     isNextButtonDisabled,
     isBackButtonDisabled,
-  } = usePagerNavigation();
+  } = usePagerNavigation(PAGES);
 
   const animatedKeyboardStyles = useAnimatedStyle(() => ({
     transform: [

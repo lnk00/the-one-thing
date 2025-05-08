@@ -2,10 +2,13 @@ import { useRef } from 'react';
 import { Keyboard } from 'react-native';
 import type Animated from 'react-native-reanimated';
 import { useAtom, useAtomValue } from 'jotai';
-import { currentPageIndexAtom, PAGES } from '../../../state/pager-state';
-import { onboardingLifeInputAtom } from '../../../state/onboarding-state';
+import {
+  currentPageIndexAtom,
+  onboardingLifeInputAtom,
+  type PageType,
+} from '../../../store';
 
-export function usePagerNavigation() {
+export function usePagerNavigation(pages: PageType[]) {
   const flatListRef = useRef<Animated.FlatList<string>>(null);
   const [currentIndex, setCurrentIndex] = useAtom(currentPageIndexAtom);
   const lifeInputValue = useAtomValue(onboardingLifeInputAtom);
@@ -15,7 +18,7 @@ export function usePagerNavigation() {
     Keyboard.dismiss();
     setTimeout(
       () => {
-        if (currentIndex < PAGES.length - 1) {
+        if (currentIndex < pages.length - 1) {
           const nextIndex = currentIndex + 1;
           flatListRef.current?.scrollToIndex({
             index: nextIndex,
@@ -50,11 +53,11 @@ export function usePagerNavigation() {
   };
 
   const isNextButtonDisabled = () => {
-    if (currentIndex === PAGES.length - 1) {
+    if (currentIndex === pages.length - 1) {
       return true;
     }
 
-    if (PAGES[currentIndex] === 'PAGE_LIFE' && lifeInputValue.length === 0) {
+    if (pages[currentIndex] === 'PAGE_LIFE' && lifeInputValue.length === 0) {
       return true;
     }
 

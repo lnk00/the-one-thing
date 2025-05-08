@@ -16,8 +16,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAtom } from 'jotai';
-import { onboardingLifeInputAtom } from '../../../../state/onboarding-state';
 import { Colors } from '../../../shared/constants/colors.constant';
+import { onboardingLifeInputAtom } from '../../../../store';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
