@@ -9,7 +9,7 @@ import Animated, {
 import { Pressable } from 'react-native';
 import { useRef, type ReactNode } from 'react';
 import * as Haptics from 'expo-haptics';
-import { Colors } from '../constants/colors';
+import { Colors } from '../constants/colors.constant';
 
 export type ButtonType = 'next' | 'back';
 export type ButtonIconSide = 'left' | 'right';

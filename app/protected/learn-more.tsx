@@ -4,7 +4,7 @@ import {
   Ionicons,
   FontAwesome5,
 } from '@expo/vector-icons';
-import { Colors } from '../../constants/colors';
+import { Colors } from '../../modules/shared/constants/colors.constant';
 
 const domains = [
   {

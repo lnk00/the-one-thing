@@ -7,8 +7,8 @@ import Animated, {
   withTiming,
   Easing,
 } from 'react-native-reanimated';
-import { Colors } from '../../constants/colors';
-import Button from '../button';
+import Button from '../../../shared/components/button.component';
+import { Colors } from '../../../shared/constants/colors.constant';
 
 export type ButtonType = 'next' | 'back';
 

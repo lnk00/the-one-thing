@@ -2,8 +2,8 @@ import { useRef } from 'react';
 import { Keyboard } from 'react-native';
 import type Animated from 'react-native-reanimated';
 import { useAtom, useAtomValue } from 'jotai';
-import { currentPageIndexAtom, PAGES } from '../state/pager-state';
-import { onboardingLifeInputAtom } from '../state/onboarding-state';
+import { currentPageIndexAtom, PAGES } from '../../../state/pager-state';
+import { onboardingLifeInputAtom } from '../../../state/onboarding-state';
 
 export function usePagerNavigation() {
   const flatListRef = useRef<Animated.FlatList<string>>(null);

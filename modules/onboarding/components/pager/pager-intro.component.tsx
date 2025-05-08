@@ -5,7 +5,7 @@ import Animated, {
   interpolate,
   type SharedValue,
 } from 'react-native-reanimated';
-import { Colors } from '../../constants/colors';
+import { Colors } from '../../../shared/constants/colors.constant';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 

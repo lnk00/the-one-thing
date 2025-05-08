@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
-import { Colors } from '../../constants/colors';
-import Button from '../../components/button';
 import { useRouter } from 'expo-router';
-import { supabase } from '../../services/supabase';
+import Button from '../../modules/shared/components/button.component';
+import { Colors } from '../../modules/shared/constants/colors.constant';
+import { supabase } from '../../modules/auth/services/supabase.service';
 
 export default function Index() {
   const router = useRouter();

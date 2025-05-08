@@ -7,12 +7,12 @@ import Animated, {
   KeyboardState,
 } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
-import PagerIntro from './pager-intro';
-import PagerLife from './pager-life';
-import PagerIndicators from './pager-indicators';
-import PagerControlls from './pager-controlls';
-import { PAGES } from '../../state/pager-state';
-import { usePagerNavigation } from '../../hooks/use-pager-navigation';
+import { usePagerNavigation } from '../../hooks/use-pager-navigation.hook';
+import PagerIntro from './pager-intro.component';
+import PagerLife from './pager-life.component';
+import PagerIndicators from './pager-indicators.component';
+import PagerControlls from './pager-controlls.component';
+import { PAGES } from '../../../../state/pager-state';
 
 export default function Pager() {
   const scrollY = useSharedValue(0);

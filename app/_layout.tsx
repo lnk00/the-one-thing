@@ -4,9 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { supabase } from '../services/supabase';
 import { useAtom } from 'jotai';
 import { sessionAtom } from '../state/auth-state';
+import { supabase } from '../modules/auth/services/supabase.service';
 
 SplashScreen.preventAutoHideAsync();
 

@@ -15,9 +15,9 @@ import Animated, {
   type SharedValue,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Colors } from '../../constants/colors';
 import { useAtom } from 'jotai';
-import { onboardingLifeInputAtom } from '../../state/onboarding-state';
+import { onboardingLifeInputAtom } from '../../../../state/onboarding-state';
+import { Colors } from '../../../shared/constants/colors.constant';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 

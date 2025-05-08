@@ -3,7 +3,7 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import { Colors } from '../../constants/colors';
+import { Colors } from '../../../shared/constants/colors.constant';
 
 export default function PagerIndicators({
   scrollX,

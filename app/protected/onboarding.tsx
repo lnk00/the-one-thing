@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import Pager from '../../components/pager/pager';
-import { Colors } from '../../constants/colors';
+import Pager from '../../modules/onboarding/components/pager/pager.component';
+import { Colors } from '../../modules/shared/constants/colors.constant';
 
 export default function Index() {
   return (

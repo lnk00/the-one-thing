@@ -1,17 +1,13 @@
 import { StyleSheet, View, Text } from 'react-native';
-import { Colors } from '../constants/colors';
-import Button from '../components/button';
-import { useAtom } from 'jotai';
-import { sessionAtom } from '../state/auth-state';
 import * as AppleAuthentication from 'expo-apple-authentication';
-import { supabase } from '../services/supabase';
 import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
+import Button from '../modules/shared/components/button.component';
+import { Colors } from '../modules/shared/constants/colors.constant';
+import { supabase } from '../modules/auth/services/supabase.service';
 
 export default function Signin() {
-  const [_, setSession] = useAtom(sessionAtom);
-
   const handleSignin = async () => {
     try {
       const credential = await AppleAuthentication.signInAsync({
