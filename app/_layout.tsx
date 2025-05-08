@@ -21,7 +21,11 @@ export default function RootLayout() {
     });
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      console.info(`User: ${session?.user.email} authenticated`);
+      if (session) {
+        console.info(`User: ${session?.user.email} authenticated`);
+      } else {
+        console.info('No user authenticated');
+      }
     });
   }, [setSession]);
 
