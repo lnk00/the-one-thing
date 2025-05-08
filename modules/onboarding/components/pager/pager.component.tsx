@@ -12,7 +12,7 @@ import PagerIntro from './pager-intro.component';
 import PagerLife from './pager-life.component';
 import PagerIndicators from './pager-indicators.component';
 import PagerControlls from './pager-controlls.component';
-import type { PageType } from '../../../../state/pager/types';
+import type { PageType } from '../../../../store/onboarding/types';
 
 const PAGES: Array<PageType> = [
   'PAGE_INTRO',
