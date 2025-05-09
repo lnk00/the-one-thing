@@ -1,15 +1,26 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import {
-  MaterialCommunityIcons,
-  Ionicons,
-  FontAwesome5,
-} from '@expo/vector-icons';
+import { StyleSheet, Text, View } from 'react-native';
+
 import { Colors } from '../../modules/shared/constants/colors.constant';
+import { supabase } from '../../modules/auth/services/supabase.service';
+import { use } from 'react';
+
+const getLifeGoals = async () => {
+  return await supabase.functions.invoke('get-life-goals', {
+    body: {
+      msg: 'I want to be a sowtware engineer in a FANG company',
+    },
+  });
+};
+
+const getLifeGoalsPromise = getLifeGoals();
 
 export default function LifeGoalsResultsModal() {
+  const { data, error } = use(getLifeGoalsPromise);
+
   return (
     <View style={styles.container}>
       <Text style={styles.modalTitle}>Life Goals Results</Text>
+      <Text>{data.career}</Text>
     </View>
   );
 }
