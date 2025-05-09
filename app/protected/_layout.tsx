@@ -12,6 +12,13 @@ export default function RootLayout() {
           animation: 'slide_from_bottom',
         }}
       />
+      <Stack.Screen
+        name="life-goals-results"
+        options={{
+          presentation: 'modal',
+          animation: 'slide_from_bottom',
+        }}
+      />
     </Stack>
   );
 }

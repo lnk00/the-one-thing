@@ -7,29 +7,36 @@ import {
   onboardingLifeInputAtom,
   type PageType,
 } from '../../../store';
+import { useRouter } from 'expo-router';
 
 export function usePagerNavigation(pages: PageType[]) {
   const flatListRef = useRef<Animated.FlatList<string>>(null);
   const [currentIndex, setCurrentIndex] = useAtom(currentPageIndexAtom);
   const lifeInputValue = useAtomValue(onboardingLifeInputAtom);
+  const router = useRouter();
 
   const handleNextPress = () => {
     const isKeyboardOpen = Keyboard.isVisible();
     Keyboard.dismiss();
-    setTimeout(
-      () => {
-        if (currentIndex < pages.length - 1) {
-          const nextIndex = currentIndex + 1;
-          flatListRef.current?.scrollToIndex({
-            index: nextIndex,
-            animated: true,
-          });
 
-          setCurrentIndex(nextIndex);
-        }
-      },
-      isKeyboardOpen ? 300 : 0,
-    );
+    if (pages[currentIndex] === 'PAGE_LIFE') {
+      router.navigate('protected/life-goals-results');
+    } else {
+      setTimeout(
+        () => {
+          if (currentIndex < pages.length - 1) {
+            const nextIndex = currentIndex + 1;
+            flatListRef.current?.scrollToIndex({
+              index: nextIndex,
+              animated: true,
+            });
+
+            setCurrentIndex(nextIndex);
+          }
+        },
+        isKeyboardOpen ? 300 : 0,
+      );
+    }
   };
 
   const handleBackPress = () => {
