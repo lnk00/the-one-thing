@@ -32,8 +32,13 @@ export default function Signin() {
       } else {
         throw new Error('No identityToken.');
       }
-    } catch (e) {
-      if (e.code === 'ERR_REQUEST_CANCELED') {
+    } catch (e: unknown) {
+      if (
+        e &&
+        typeof e === 'object' &&
+        'code' in e &&
+        e.code === 'ERR_REQUEST_CANCELED'
+      ) {
         // handle that the user canceled the sign-in flow
         console.log('PROBLEM');
       } else {

@@ -51,7 +51,10 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <GestureHandlerRootView style={{ flex: 1 }}>
           <Stack
-            screenOptions={{ headerShown: false, animation: 'fade_from_bottom' }}
+            screenOptions={{
+              headerShown: false,
+              animation: 'fade_from_bottom',
+            }}
           >
             <Stack.Protected guard={session === null}>
               <Stack.Screen name="index" />
